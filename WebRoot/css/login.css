@@ -1,8 +1,12 @@
 .login-position{
-	top: 260px;
+	top: 150px;
 	position: relative;
 }
 .login-color{
 	background-color: rgb(196, 230, 255);
     border: 1px solid rgb(239, 217, 201);	
+}
+.blogsaddress{
+	width: 58%;
+	display: inline;
 }
