@@ -11,6 +11,11 @@
         http://www.springframework.org/schema/data/mongo/spring-mongo.xsd  
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">  
+    
+    <!-- http://blog.sina.com.cn/s/blog_872758480100wtfh.html
+    	激活spring的注解.不需要添加 原因如上  
+   		 <context:annotation-config />  
+     -->
        
     <!-- 加载mongodb的属性配置文件 -->
        

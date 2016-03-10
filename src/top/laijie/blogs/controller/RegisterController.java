@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;  
 
 import top.laijie.blogs.domain.User;
-import top.laijie.blogs.server.UserService;
+import top.laijie.blogs.service.UserService;
 import top.laijie.blogs.tool.ServiceException;
   
   

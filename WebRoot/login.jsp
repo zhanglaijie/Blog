@@ -41,21 +41,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="panel-92846">
-						<form class="form-horizontal" role="form">
+						<form id="login-form" action="<%=basePath%>j_spring_security_check" method="post" class="form-horizontal" role="form">
 							<div class="form-group">
-								 <label for="inputEmail3" class="col-sm-3 control-label">
+								 <label for="j_username" class="col-sm-3 control-label">
 									<span class="glyphicon glyphicon-user"></span> 用户
 								 </label>
 								<div class="col-sm-9">
-									<input class="form-control" id="inputEmail3" type="email" />
+									<input id="j_username" name="j_username" class="form-control" placeholder="用户名或邮箱" id="inputEmail3" type="text" />
 								</div>
 							</div>
 							<div class="form-group">
-								 <label for="inputPassword3" class="col-sm-3 control-label">
+								 <label for="j_password" class="col-sm-3 control-label">
 								 <span class="glyphicon glyphicon-lock"></span>
 								 密码</label>
 								<div class="col-sm-9">
-									<input class="form-control" id="inputPassword3" type="password" />
+									<input class="form-control" id="j_password" name="j_password" placeholder="密码" type="password" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -67,8 +67,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									 <button type="button" onclick="window.location='index.html'" class="btn btn-info">登陆</button>
-									 <button type="submit" class="btn btn-info">取消</button>
+									 <button type="submit"  class="btn btn-info">登陆</button>
+									 <button type="reset" id="loginReset" class="btn btn-info">取消</button>
 									 <button type="submit" class="btn btn-link">找回密码</button>
 								</div>
 							</div>
@@ -138,12 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<script type="text/javascript" src="<%=basePath%>/validator/dist/js/bootstrapValidator.js"></script>
   	<script type="text/javascript">
 		$(document).ready(function() {
-		    // Generate a simple captcha
-		    function randomNumber(min, max) {
-		        return Math.floor(Math.random() * (max - min + 1) + min);
-		    };
-		    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
-		
+		   //注册表单验证
 		    $('#register-form').bootstrapValidator({
 		//        live: 'disabled',
 		        message: 'This value is not valid',
@@ -153,6 +148,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            validating: 'glyphicon glyphicon-refresh'
 		        },
 		        fields: {
+		        	username: {
+		                validators: {
+		                	notEmpty: {
+		                        message: '请输入用户名'
+		                    }
+		                }
+		            },
 		            email: {
 		                validators: {
 		                	notEmpty: {
@@ -202,21 +204,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                        message: '请输入博客地址博客名称'
 		                    }
 		                } 
-		            },
-		            captcha: {
-		                validators: {
-		                    callback: {
-		                        message: 'Wrong answer',
-		                        callback: function(value, validator) {
-		                            var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
-		                            return value == sum;
-		                        }
-		                    }
-		                }
 		            }
+		           
 		        }
 		    });
-		
+			//登陆表单验证
+		    $('#login-form').bootstrapValidator({
+				//        live: 'disabled',
+				        message: '该数据不合法',
+				        feedbackIcons: {
+				            valid: 'glyphicon glyphicon-ok',
+				            invalid: 'glyphicon glyphicon-remove',
+				            validating: 'glyphicon glyphicon-refresh'
+				        },
+				        fields: {
+				        	username: {
+				                validators: {
+				                	notEmpty: {
+				                        message: '请输入用户名'
+				                    }
+				                }
+				            },
+				            password: {
+				                validators: {
+				                    notEmpty: {
+				                        message: '请输入登录密码'
+				                    },
+				                    different: {
+				                        field: 'email',
+				                        message: '密码不能和邮箱相同'
+				                    }
+				                }
+				            }
+
+				        }
+				    });
 		    // Validate the form manually
 		   // $('#validateBtn').click(function() {
 		     //   $('#register-form').bootstrapValidator('validate');
@@ -224,6 +246,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		    $('#resetBtn').click(function() {
 		        $('#register-form').data('bootstrapValidator').resetForm(true);
+		    });
+		    $('#loginReset').click(function() {
+		        $('#login-form').data('bootstrapValidator').resetForm(true);
 		    });
 		});
 		</script>

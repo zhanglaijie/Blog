@@ -13,8 +13,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>Bootstrap 101 Template</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="<%=basePath%>/validator/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<%=basePath%>/validator/dist/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="<%=basePath%>validator/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<%=basePath%>validator/dist/css/bootstrapValidator.css"/>
   </head>
   <body>
 	<div class="container">

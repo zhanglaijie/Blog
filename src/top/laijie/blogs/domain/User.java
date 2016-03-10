@@ -30,6 +30,11 @@ public class User extends Basic implements Serializable{
     private Date  registerTime;//注册时间 
     private String blogname;
     private String blogaddress;
+    /**
+     * 权限 auth ：0-普通用户
+     * 			 1- 管理员
+     */
+    private int auth =0;
 	public String getUid() {
 		return uid;
 	}
@@ -91,12 +96,12 @@ public class User extends Basic implements Serializable{
 	public void setRegisterTime(Date registerTime) {
 		this.registerTime = registerTime;
 	}
-	@Override
-	public String toString() {
-		return "User [uid=" + uid + ", username=" + username + ", password="
-				+ password + ", nicename=" + nicename + ", email=" + email
-				+ ", blogname=" + blogname + ", blogaddress=" + blogaddress
-				+ "]";
+	
+	public int getAuth() {
+		return auth;
+	}
+	public void setAuth(int auth) {
+		this.auth = auth;
 	}
 	@Transient  
     public Date getLastActivateTime() {  

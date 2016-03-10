@@ -4,8 +4,6 @@
 http://www.runoob.com/mongodb/mongodb-tutorial.html
 
 
-
-
 1,Mongo 区分，服务端 和客户端
 
 2,默认不需要密码

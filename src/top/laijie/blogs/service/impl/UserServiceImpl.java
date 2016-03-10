@@ -1,4 +1,4 @@
-package top.laijie.blogs.server.impl;
+package top.laijie.blogs.service.impl;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;  
 
 import top.laijie.blogs.domain.User;
-import top.laijie.blogs.server.UserService;
+import top.laijie.blogs.service.UserService;
 import top.laijie.blogs.tool.BasicService;
 import top.laijie.blogs.tool.MD5Util;
 import top.laijie.blogs.tool.SendEmail;
