@@ -1,5 +1,7 @@
 package top.laijie.blogs.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;  
   
 import javax.annotation.Resource;  
@@ -57,6 +59,24 @@ public class RegisterController {
         }  
         return mav;  
     }  
-      
-  
+     // 验证邮箱
+    @RequestMapping(value="/register/checkemail",method={RequestMethod.GET,RequestMethod.POST})  
+    public void  checkemail(HttpServletRequest request,HttpServletResponse response){  
+    	User user = null;
+    	String email = request.getParameter("email");
+    	//System.out.println("---"+email);
+    	user = service.getUserByEmail(email);
+    	PrintWriter writer = null;
+		try {
+			writer = response.getWriter();
+			if(user!=null){
+				writer.write("success");
+	    	}
+			
+		} catch (IOException e) {
+			writer.write("failure");
+		}
+    	
+    }
+    
 }  

@@ -10,3 +10,12 @@
 	width: 58%;
 	display: inline;
 }
+.emailout{
+	height: 70px;
+}
+#backemail{
+	width: 190px;
+}
+#login-error{
+	color:red;
+}

@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 @Controller
-@RequestMapping("/me")
+@RequestMapping("")
 public class IndexPageController {
 	 private static Logger logger = Logger.getLogger(IndexPageController.class.getName());  
 	@RequestMapping(value="/{name}", method = {RequestMethod.GET})

@@ -53,6 +53,13 @@ import top.laijie.blogs.tool.ServiceException;
 
 		}  
 		
+		public User getUserByEmail(String email) {
+			// TODO Auto-generated method stub
+			Query query = new Query();  
+	        query.addCriteria(Criteria.where("email").is(email));  
+	        User user = mongoTemplate.findOne(query, User.class,USER_COLLECTION);  
+	        return user;
+		}  
 		  /** 
 	     * 处理注册 
 	     */  

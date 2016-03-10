@@ -20,4 +20,8 @@ public interface UserService{
 	     */  
 	      ///传递激活码和email过来  
 	 public void processActivate(String email , String validateCode) throws ServiceException, ParseException;
+	 /**
+	  * 用邮箱获取User
+	  */
+	 public User getUserByEmail(String email);
 }

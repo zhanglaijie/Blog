@@ -60,6 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
+										<label><div id="login-error">${error}</div></label>
 									<div class="checkbox">
 										 <label><input type="checkbox" />Remember me</label>
 									</div>
@@ -67,9 +68,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
+									  
 									 <button type="submit"  class="btn btn-info">登陆</button>
 									 <button type="reset" id="loginReset" class="btn btn-info">取消</button>
-									 <button type="submit" class="btn btn-link">找回密码</button>
+									 
+									 <a id="modal-657474" href="#modal-container-657474" 
+									 role="button" class="btn" data-toggle="modal">找回密码</a>
 								</div>
 							</div>
 						</form>
@@ -130,127 +134,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="col-md-4 column">
 		</div>
 	</div>
+	
+	<!-- 弹出窗口 start -->
+	<div class="modal fade" id="modal-container-657474" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<form id="email-form" action="user/find" method="post" class="form-horizontal" role="form">
+							<div class="modal-content" style="width: 350px;">
+								<div class="modal-header">
+									 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h4 class="modal-title" id="myModalLabel">
+										找回密码
+									</h4>
+								</div>
+								<div class="modal-body emailout" >
+									<div class="form-group">
+									
+										<div class="row">
+											<div class="col-md-12 column">
+			
+				<div class="form-group">
+					 <label for="inputEmail3" class="col-sm-4 control-label">
+					 <span class="glyphicon glyphicon-envelope"></span>
+					 邮箱地址</label>
+					<div class="col-sm-8">
+						<input class="form-control" id="backemail" name="backemail" type="email" />
+					</div>
+				</div>
+			</div>
+			</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">发送</button>
+					 <button type="button" id="resetBak" class="btn btn-default" data-dismiss="modal">关闭</button>
+						
+				</div>
+			</div>
+			</form>
+		</div>
+						
+					</div>
+					<!-- end -->
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<%=basePath%>/validator/vendor/jquery/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<%=basePath%>/validator/vendor/bootstrap/js/bootstrap.min.js"></script>
   	<script type="text/javascript" src="<%=basePath%>/validator/dist/js/bootstrapValidator.js"></script>
-  	<script type="text/javascript">
-		$(document).ready(function() {
-		   //注册表单验证
-		    $('#register-form').bootstrapValidator({
-		//        live: 'disabled',
-		        message: 'This value is not valid',
-		        feedbackIcons: {
-		            valid: 'glyphicon glyphicon-ok',
-		            invalid: 'glyphicon glyphicon-remove',
-		            validating: 'glyphicon glyphicon-refresh'
-		        },
-		        fields: {
-		        	username: {
-		                validators: {
-		                	notEmpty: {
-		                        message: '请输入用户名'
-		                    }
-		                }
-		            },
-		            email: {
-		                validators: {
-		                	notEmpty: {
-		                        message: '请输入邮箱'
-		                    },
-		                    emailAddress: {
-		                        message: '请输入正确的邮箱'
-		                    }
-		                }
-		            },
-		            password: {
-		                validators: {
-		                    notEmpty: {
-		                        message: '请输入登录密码'
-		                    },
-		                    different: {
-		                        field: 'email',
-		                        message: '密码不能和邮箱相同'
-		                    }
-		                }
-		            },
-		            confirmPassword: {
-		                validators: {
-		                	 notEmpty: {
-			                        message: '请输入确认密码'
-			                    },
-		                    identical: {
-		                        field: 'password',
-		                        message: '密码与确认密码输入不一致'
-		                    },
-		                    different: {
-		                        field: 'email',
-		                        message: '密码不能和邮箱相同'
-		                    }
-		                }
-		            },
-		            blogname: {
-		                validators: {
-		                    notEmpty: {
-		                        message: '请输入博客名称'
-		                    }
-		                }  
-		            },
-		            blogaddress: {
-		                validators: {
-		                    notEmpty: {
-		                        message: '请输入博客地址博客名称'
-		                    }
-		                } 
-		            }
-		           
-		        }
-		    });
-			//登陆表单验证
-		    $('#login-form').bootstrapValidator({
-				//        live: 'disabled',
-				        message: '该数据不合法',
-				        feedbackIcons: {
-				            valid: 'glyphicon glyphicon-ok',
-				            invalid: 'glyphicon glyphicon-remove',
-				            validating: 'glyphicon glyphicon-refresh'
-				        },
-				        fields: {
-				        	username: {
-				                validators: {
-				                	notEmpty: {
-				                        message: '请输入用户名'
-				                    }
-				                }
-				            },
-				            password: {
-				                validators: {
-				                    notEmpty: {
-				                        message: '请输入登录密码'
-				                    },
-				                    different: {
-				                        field: 'email',
-				                        message: '密码不能和邮箱相同'
-				                    }
-				                }
-				            }
-
-				        }
-				    });
-		    // Validate the form manually
-		   // $('#validateBtn').click(function() {
-		     //   $('#register-form').bootstrapValidator('validate');
-		    //});
-		
-		    $('#resetBtn').click(function() {
-		        $('#register-form').data('bootstrapValidator').resetForm(true);
-		    });
-		    $('#loginReset').click(function() {
-		        $('#login-form').data('bootstrapValidator').resetForm(true);
-		    });
-		});
-		</script>
+  	<script type="text/javascript" src="<%=basePath%>/js/login.js"></script>
   </body>
 </html>

@@ -107,7 +107,7 @@ public class UserController {
         if (error == true) {  
             // Assign an error message  
             model.put("error",  
-                    "You have entered an invalid username or password!");  
+                    "账号或密码错误");  
         } else {  
             model.put("error", "");  
         }  

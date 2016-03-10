@@ -17,7 +17,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" href="<%=basePath%>/css/login.css">
   </head>
   <body>
-	
+	<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					 
+					
+		
+					
+				</div>
+			</div>
+		</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<%=basePath%>/validator/vendor/jquery/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
