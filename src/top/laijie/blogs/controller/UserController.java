@@ -1,6 +1,12 @@
 package top.laijie.blogs.controller;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Logger;  
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.bson.json.JsonWriter;
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Controller;  
 import org.springframework.ui.ModelMap;
@@ -71,7 +77,17 @@ public class UserController {
         logger.info("find:"+user);  
         return "/back/index.jsp";  
     }  
-    
+    @RequestMapping("/qingru")  
+    public void qiru(User user,HttpServletRequest request,HttpServletResponse response) throws IOException{  
+           
+        String a = request.getParameter("id"); 
+        logger.info("find:"+a); 
+       // userService.updateUserByEmail(user.getEmail());  
+        PrintWriter writer = response.getWriter();
+        StringBuffer buffer = new StringBuffer();
+        //buffer.append())
+       writer.write("{\"id\":1}");
+    }  
     /** 
      * 跳转到commonpage页面 
      *  

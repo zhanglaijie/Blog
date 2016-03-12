@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=WebRoot/validator/dist,WebRoot/validator/demo,WebRoot/validator/vendor
+validator.Unchecked=
