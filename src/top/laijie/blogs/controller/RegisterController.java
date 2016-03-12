@@ -70,13 +70,35 @@ public class RegisterController {
 		try {
 			writer = response.getWriter();
 			if(user!=null){
-				writer.write("success");
+				writer.write("{\"status\":\"failure\"}");
+	    	}else{
+	    		writer.write("{\"status\":\"success\"}");
+	    		
 	    	}
 			
 		} catch (IOException e) {
-			writer.write("failure");
+			writer.write("{\"status\":\"success\"}");
 		}
-    	
     }
-    
+    //验证邮件地址/register/checkblogaddress
+    @RequestMapping(value="/register/checkblogaddress",method={RequestMethod.GET,RequestMethod.POST})  
+    public void  checkblogaddress(HttpServletRequest request,HttpServletResponse response){  
+    	User user = null;
+    	String blogaddress = request.getParameter("blogaddress");
+    	//System.out.println("---"+email);
+    	user = service.getUserByblogaddress(blogaddress);
+    	PrintWriter writer = null;
+		try {
+			writer = response.getWriter();
+			if(user!=null){
+				writer.write("{\"status\":\"failure\"}");
+	    	}else{
+	    		writer.write("{\"status\":\"success\"}");
+	    		
+	    	}
+			
+		} catch (IOException e) {
+			writer.write("{\"status\":\"success\"}");
+		}
+    }
 }  

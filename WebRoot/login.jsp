@@ -172,9 +172,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			</form>
 		</div>
-						
-					</div>
-					<!-- end -->
+	</div>
+	<!-- end -->
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<%=basePath%>/validator/vendor/jquery/jquery.min.js"></script>

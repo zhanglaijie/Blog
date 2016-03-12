@@ -51,15 +51,22 @@ import top.laijie.blogs.tool.ServiceException;
 	        user.setStatus(5);  
 	        mongoTemplate.save(user, USER_COLLECTION);
 
-		}  
-		
+		}
+		@Override
 		public User getUserByEmail(String email) {
 			// TODO Auto-generated method stub
 			Query query = new Query();  
 	        query.addCriteria(Criteria.where("email").is(email));  
 	        User user = mongoTemplate.findOne(query, User.class,USER_COLLECTION);  
 	        return user;
-		}  
+		} 
+		@Override
+		public User getUserByblogaddress(String blogaddress) {
+			Query query = new Query();  
+	        query.addCriteria(Criteria.where("blogaddress").is(blogaddress));  
+	        User user = mongoTemplate.findOne(query, User.class,USER_COLLECTION);  
+	        return user;
+		}   
 		  /** 
 	     * 处理注册 
 	     */  
@@ -128,6 +135,6 @@ import top.laijie.blogs.tool.ServiceException;
 	            throw new ServiceException("该邮箱未注册（邮箱地址不存在）！");    
 	        }    
 	        
-	    }   
+	    }
 	}
 

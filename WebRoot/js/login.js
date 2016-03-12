@@ -25,7 +25,7 @@ $(document).ready(function() {
 		                        message: '请输入正确的邮箱'
 		                    },
 		                    callback: { 
-		                    	message: '邮箱已经被占用', 
+		                    	message: '邮箱已经被注册,请直接登陆', 
 		                    	callback: function (value, validator) { 
 		                    		var res = true; 
 		                    		if (value.match(/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/i)) {
@@ -37,14 +37,16 @@ $(document).ready(function() {
 		                    			data: {email: value}, 
 		                    			success:
 		                    				function (data) {
-		                    				alert(data);
+		                    				//alert(data.status);
 		                    				if (data.status != 'success'){
 		                    					res = false;
+		                    					//alert(res);
 		                    					} 
 		                    				} 
 		                    			}); 
+		                    			//alert(res);
 		                    			} return res; 
-		                    			} 
+		                    	} 
 		                    }
 		                }
 		            },
@@ -85,10 +87,31 @@ $(document).ready(function() {
 		                validators: {
 		                    notEmpty: {
 		                        message: '请输入博客地址博客名称'
+		                    },
+		                    callback: { 
+		                    	message: '该地址已存在,请更换', 
+		                    	callback: function (value, validator) { 
+		                    		var res = true; 
+		                    		$.ajax({ 
+		                    			url: 'user/register/checkblogaddress', 
+		                    			type: 'post', 
+		                    			dataType: 'json', 
+		                    			async: false, 
+		                    			data: {blogaddress: value}, 
+		                    			success:
+		                    				function (data) {
+		                    				//alert(data.status);
+		                    				if (data.status != 'success'){
+		                    					res = false;
+		                    					//alert(res);
+		                    					} 
+		                    				} 
+		                    			}); 
+		                    		return res; 
+		                    	} 
 		                    }
 		                } 
 		            }
-		           
 		        }
 		    });
 			//登陆表单验证

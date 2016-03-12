@@ -24,4 +24,5 @@ public interface UserService{
 	  * 用邮箱获取User
 	  */
 	 public User getUserByEmail(String email);
+	User getUserByblogaddress(String blogaddress);
 }
