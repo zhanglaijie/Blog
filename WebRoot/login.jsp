@@ -138,40 +138,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 弹出窗口 start -->
 	<div class="modal fade" id="modal-container-657474" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			<form id="email-form" action="user/find" method="post" class="form-horizontal" role="form">
-							<div class="modal-content" style="width: 350px;">
-								<div class="modal-header">
-									 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-									<h4 class="modal-title" id="myModalLabel">
-										找回密码
-									</h4>
+				<form id="email-form" action="user/tofindPasswdByEmail.do" method="post"
+					class="form-horizontal" role="form">
+					<div class="modal-content" style="width: 350px;">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel">找回密码</h4>
+						</div>
+						<div class="modal-body emailout">
+							<div class="form-group">
+
+								<div class="row">
+									<div class="col-md-12 column">
+
+										<div class="form-group">
+											<label for="inputEmail3" class="col-sm-4 control-label">
+												<span class="glyphicon glyphicon-envelope"></span> 邮箱地址</label>
+											<div class="col-sm-8">
+												<input class="form-control" id="backemail" name="backemail"
+													type="email" />
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="modal-body emailout" >
-									<div class="form-group">
-									
-										<div class="row">
-											<div class="col-md-12 column">
-			
-				<div class="form-group">
-					 <label for="inputEmail3" class="col-sm-4 control-label">
-					 <span class="glyphicon glyphicon-envelope"></span>
-					 邮箱地址</label>
-					<div class="col-sm-8">
-						<input class="form-control" id="backemail" name="backemail" type="email" />
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">发送</button>
+							<button type="button" id="resetBak" class="btn btn-default"
+								data-dismiss="modal">关闭</button>
+
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
-			</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">发送</button>
-					 <button type="button" id="resetBak" class="btn btn-default" data-dismiss="modal">关闭</button>
-						
-				</div>
-			</div>
-			</form>
-		</div>
 	</div>
 	<!-- end -->
 </div>

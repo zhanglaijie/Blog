@@ -70,7 +70,6 @@ import top.laijie.blogs.tool.ServiceException;
 		  /** 
 	     * 处理注册 
 	     */  
-	   
 	    public void processregister(User user){  
 	        user.setRegisterTime(new Date());  
 	        user.setStatus(0);  
@@ -93,11 +92,34 @@ import top.laijie.blogs.tool.ServiceException;
 	        sb.append("</a>");  
 	          
 	        //发送邮件  
-	        SendEmail.send(user.getEmail(), sb.toString());  
+	        SendEmail.send(user.getEmail(), sb.toString(),"账号激活邮件");  
 	        System.out.println("发送邮件");  
 	          
 	    }  
-	      
+	    
+		@Override
+		public void processFindPassword(User user) {
+			/*user.setRegisterTime(new Date());  
+	        user.setStatus(0);  
+	        ///如果处于安全，可以将激活码处理的更复杂点，这里我稍做简单处理  
+	        //user.setValidateCode(MD5Tool.MD5Encrypt(email));  
+	        user.setValidateCode(MD5Util.encode2hex(user.getEmail()));  
+	        this.save(user); */
+	        ///邮件的内容  
+	        StringBuffer sb=new StringBuffer("点击下面链接找回账号</br>");  
+	        sb.append("<a href=\"http://localhost:8080/Blogs/user/findPasswdByEmail.do?action=activate&email=");  
+	        sb.append(user.getEmail());   
+	        sb.append("&validateCode=");   
+	        sb.append(user.getValidateCode());  
+	        sb.append("\">http://localhost:8080/Blogs/user/findPasswdByEmail.do?action=activate&email=");   
+	        sb.append(user.getEmail());  
+	        sb.append("&validateCode=");  
+	        sb.append(user.getValidateCode());  
+	        sb.append("</a>");    
+	        //发送邮件  
+	        SendEmail.send(user.getEmail(), sb.toString(),"密码找回邮件");  
+	        System.out.println("发送邮件");
+		}  
 	    /** 
 	     * 处理激活 
 	     * @throws ParseException  
@@ -133,8 +155,7 @@ import top.laijie.blogs.tool.ServiceException;
 	            }    
 	        } else {  
 	            throw new ServiceException("该邮箱未注册（邮箱地址不存在）！");    
-	        }    
-	        
+	        }      
 	    }
 	}
 

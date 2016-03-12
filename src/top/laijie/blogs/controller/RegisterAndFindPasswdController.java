@@ -3,25 +3,28 @@ package top.laijie.blogs.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;  
+import java.util.logging.Logger;
   
 import javax.annotation.Resource;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;  
   
 import org.springframework.stereotype.Controller;  
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;  
 import org.springframework.web.bind.annotation.RequestMethod;  
 import org.springframework.web.servlet.ModelAndView;  
 
 import top.laijie.blogs.domain.User;
 import top.laijie.blogs.service.UserService;
+import top.laijie.blogs.tool.Page;
 import top.laijie.blogs.tool.ServiceException;
   
   
 @Controller  
 @RequestMapping("/user")
-public class RegisterController {  
-      
+public class RegisterAndFindPasswdController {  
+	private static Logger logger = Logger.getLogger(RegisterAndFindPasswdController.class.getName());    
     @Resource  
     private UserService service;  
       
@@ -101,4 +104,33 @@ public class RegisterController {
 			writer.write("{\"status\":\"success\"}");
 		}
     }
+    //
+    @RequestMapping("/tofindPasswdByEmail.do")
+    public String tofindPasswdByEmail(ModelMap map,HttpServletRequest request,HttpServletResponse response){  
+    	logger.info("---");
+    	User user = null;
+    	String backemail = request.getParameter("backemail");
+    	user = service.getUserByEmail(backemail);
+    	if(user!=null){
+    		service.processFindPassword(user);//发邮箱激活
+        return "MyJsp.jsp";
+    	}else{
+    		map.addAttribute("message", "该邮件未注册请登陆或注册");
+    		 return "register/activate_failure.jsp";
+    	}
+    }  
+    @RequestMapping("/findPasswdByEmail.do")
+    public String findPasswdByEmail(ModelMap map,HttpServletRequest request,HttpServletResponse response){  
+    	logger.info("---");
+    	User user = null;
+    	String backemail = request.getParameter("backemail");
+    	user = service.getUserByEmail(backemail);
+    	if(user!=null){
+    		service.processregister(user);//发邮箱激活
+        return "MyJsp.jsp";
+    	}else{
+    		map.addAttribute("message", "该邮件未注册请登陆或注册");
+    		 return "register/activate_failure.jsp";
+    	}
+    }  
 }  

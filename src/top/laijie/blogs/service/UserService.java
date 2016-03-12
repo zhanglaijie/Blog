@@ -15,6 +15,10 @@ public interface UserService{
 	     */
 	 public void processregister(User user);
 	 /** 
+	     * 处理找回
+	     */
+	 public void processFindPassword(User user);
+	 /** 
 	     * 处理激活 
 	     * @throws ParseException  
 	     */  
