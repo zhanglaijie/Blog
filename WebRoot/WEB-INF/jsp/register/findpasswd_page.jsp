@@ -35,6 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</h3>
 						<form class="form-horizontal" role="form">
 						  <div class="form-group">
+						  	<input type="hidden" name="email" value="${user.email}"/>
 						    <label  class="col-sm-4 control-label" for="exampleInputEmail2">
 						    <span class="glyphicon glyphicon-lock"></span>用户密码</label>
 						    <div class="col-sm-8">
@@ -50,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						  </div>
 							<div class="form-group">
 										<div class="col-sm-offset-4 col-sm-8">
-											 <button type="submit"  class="btn btn-primary">登陆</button>
+											 <button type="submit"  class="btn btn-primary">确认修改</button>
 											 <button type="reset" id="loginReset" class="btn btn-info">取消</button>
 										</div>
 									</div>
