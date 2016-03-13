@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<span class="glyphicon glyphicon-user"></span> 用户
 								 </label>
 								<div class="col-sm-9">
-									<input id="j_username" name="j_username" class="form-control" placeholder="用户名或邮箱" id="inputEmail3" type="text" />
+									<input id="j_username" name="j_username" class="form-control" placeholder="邮箱" id="inputEmail3" type="text" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -79,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</form>
 					</div>
 					<div class="tab-pane" id="panel-556995">
-						<form id="register-form" class="form-horizontal" role="form" action="user/register" method="post">
+						<form id="register-form" class="form-horizontal" role="form" action="<%=basePath%>user/register" method="post">
 							<div class="form-group">
 								 <label for="inputEmail3" class="col-sm-4 control-label">
 								 <span class="glyphicon glyphicon-envelope"></span>邮箱地址</label>
@@ -138,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 弹出窗口 start -->
 	<div class="modal fade" id="modal-container-657474" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-				<form id="email-form" action="user/tofindPasswdByEmail.do" method="post"
+				<form id="email-form" action="<%=basePath%>user/tofindPasswdByEmail.do" method="post"
 					class="form-horizontal" role="form">
 					<div class="modal-content" style="width: 350px;">
 						<div class="modal-header">

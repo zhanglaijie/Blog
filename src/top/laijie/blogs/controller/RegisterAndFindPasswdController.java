@@ -29,7 +29,7 @@ public class RegisterAndFindPasswdController {
     private UserService service;  
       
     @RequestMapping(value="/register",method={RequestMethod.GET,RequestMethod.POST})  
-    public ModelAndView  load(HttpServletRequest request,HttpServletResponse response,User user) throws ParseException{  
+    public ModelAndView  register(HttpServletRequest request,HttpServletResponse response,User user) throws ParseException{  
         String action = request.getParameter("action");  
         System.out.println("-----r----"+action);  
         ModelAndView mav=new ModelAndView();  
@@ -113,24 +113,30 @@ public class RegisterAndFindPasswdController {
     	user = service.getUserByEmail(backemail);
     	if(user!=null){
     		service.processFindPassword(user);//发邮箱激活
-        return "MyJsp.jsp";
+    		String url[] = user.getEmail().split("@");
+            StringBuffer burl =new StringBuffer();
+            burl.append("http://mail.").append(url[1]);
+            map.addAttribute("mailurl",burl );
+        return "register/tofindpasswd_page.jsp";
     	}else{
     		map.addAttribute("message", "该邮件未注册请登陆或注册");
     		 return "register/activate_failure.jsp";
     	}
     }  
+    
     @RequestMapping("/findPasswdByEmail.do")
     public String findPasswdByEmail(ModelMap map,HttpServletRequest request,HttpServletResponse response){  
-    	logger.info("---");
     	User user = null;
-    	String backemail = request.getParameter("backemail");
-    	user = service.getUserByEmail(backemail);
-    	if(user!=null){
-    		service.processregister(user);//发邮箱激活
-        return "MyJsp.jsp";
+    	String email = request.getParameter("email");
+    	String validateCode = request.getParameter("validateCode");//激活码  
+    	user = service.getUserByEmailAndValidate(email,validateCode);
+    	if(user==null){
+    		map.addAttribute("message", "404----该链接失效,请重新操作!");
+   		 	return "register/activate_failure.jsp";
     	}else{
-    		map.addAttribute("message", "该邮件未注册请登陆或注册");
-    		 return "register/activate_failure.jsp";
+    		logger.info(user.toString());
+    		map.addAttribute("user", user);
+      		return "register/findpasswd_page.jsp";
     	}
-    }  
+    }
 }  

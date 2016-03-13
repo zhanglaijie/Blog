@@ -28,28 +28,26 @@ public class CustomUserDetailsService extends BasicService<User> implements User
 	protected static Logger logger = Logger.getLogger("service");
 
 
-	public UserDetails loadUserByUsername(String username){
-			UserDetails userdetail = null;   
-			try{
-			Query query = new Query();  
-	        query.addCriteria(Criteria.where("username").is(username));  
-	        User user = mongoTemplate.findOne(query, User.class,USER_COLLECTION);  
-			//User user = this.findOne(query);
-
-			// Populate the Spring User object with details from the dbUser
-			// Here we just pass the username, password, and access level
-			// getAuthorities() will translate the access level to the correct
-			// role type
-
-			userdetail = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword()
-					.toLowerCase(), true, true, true, true,
-					getAuthorities(user.getAuth()));
-			}catch (Exception e){
-				logger.error("Error in retrieving user");
-				throw new UsernameNotFoundException("Error in retrieving user");
-			}
-		return userdetail;
-	}
+	public UserDetails loadUserByUsername(String email){
+		//用户名暂时用邮箱代替
+		UserDetails userdetail = null;  
+		Boolean status = true;
+		try{
+		Query query = new Query();  
+        query.addCriteria(Criteria.where("email").is(email));  
+        User user = mongoTemplate.findOne(query, User.class,USER_COLLECTION);  
+		if(user.getStatus()==0){
+			status =false;
+		}
+        userdetail = new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword()
+				.toLowerCase(), true, true, true,status,
+				getAuthorities(user.getAuth()));
+		}catch (Exception e){
+			logger.error("Error in retrieving user");
+			throw new UsernameNotFoundException("Error in retrieving user");
+		}
+	return userdetail;
+}
 
 	/**
 	 * 获得访问角色权限

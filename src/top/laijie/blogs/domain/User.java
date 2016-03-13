@@ -110,5 +110,13 @@ public class User extends Basic implements Serializable{
         cl.add(Calendar.DATE , 2);  
           
         return cl.getTime();  
-    }  
+    }
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", username=" + username + ", password="
+				+ password + ", nicename=" + nicename + ", email=" + email
+				+ ", status=" + status + ", validateCode=" + validateCode
+				+ ", registerTime=" + registerTime + ", blogname=" + blogname
+				+ ", blogaddress=" + blogaddress + ", auth=" + auth + "]";
+	}
 }

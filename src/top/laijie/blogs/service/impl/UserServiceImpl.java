@@ -2,23 +2,25 @@ package top.laijie.blogs.service.impl;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import org.springframework.data.mongodb.core.query.Criteria;  
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;  
 
+import top.laijie.blogs.controller.RegisterAndFindPasswdController;
 import top.laijie.blogs.domain.User;
 import top.laijie.blogs.service.UserService;
 import top.laijie.blogs.tool.BasicService;
+import top.laijie.blogs.tool.Des3;
 import top.laijie.blogs.tool.MD5Util;
 import top.laijie.blogs.tool.SendEmail;
 import top.laijie.blogs.tool.ServiceException;
   
 	@Service   
-	public class UserServiceImpl extends BasicService<User> implements UserService  {  
-	       
-	       
-	    /** 
+	public class UserServiceImpl extends BasicService<User> implements UserService  {     
+		private static Logger logger = Logger.getLogger(UserServiceImpl.class.getName());
+		/** 
 	     *  
 	     * @param name 
 	     * @return  
@@ -48,7 +50,7 @@ import top.laijie.blogs.tool.ServiceException;
 			Query query = new Query();  
 	        query.addCriteria(Criteria.where("email").is(email));  
 	        User user = mongoTemplate.findOne(query, User.class,USER_COLLECTION);  
-	        user.setStatus(5);  
+	        user.setStatus(1);  
 	        mongoTemplate.save(user, USER_COLLECTION);
 
 		}
@@ -74,11 +76,10 @@ import top.laijie.blogs.tool.ServiceException;
 	        user.setRegisterTime(new Date());  
 	        user.setStatus(0);  
 	        ///如果处于安全，可以将激活码处理的更复杂点，这里我稍做简单处理  
-	        //user.setValidateCode(MD5Tool.MD5Encrypt(email));  
-	        user.setValidateCode(MD5Util.encode2hex(user.getEmail()));  
-	          
+		    user.setValidateCode(Des3.encode(user.getEmail()));
+		    user.setPassword(MD5Util.encode2hex(user.getPassword()));
+	        //user.setValidateCode(MD5Util.encode2hex(user.getEmail()));   
 	        this.save(user);
-	          
 	        ///邮件的内容  
 	        StringBuffer sb=new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");  
 	        sb.append("<a href=\"http://localhost:8080/Blogs/user/register?action=activate&email=");  
@@ -140,22 +141,31 @@ import top.laijie.blogs.tool.ServiceException;
 	                    //验证激活码是否正确    
 	                    if(validateCode.equals(user.getValidateCode())) {    
 	                        //激活成功， //并更新用户的激活状态，为已激活   
-	                        System.out.println("==sq==="+user.getStatus());  
+	                        logger.info("status="+user.getStatus());  
 	                        user.setStatus(1);//把状态改为激活  
-	                        System.out.println("==sh==="+user.getStatus()); 
-	                        
-	                    this.updateUserByEmail(email);  
+	                        logger.info("status="+user.getStatus()); 
+	                        this.updateUserByEmail(email);  
 	                    } else {    
 	                       throw new ServiceException("激活码不正确");    
 	                    }    
 	                } else { throw new ServiceException("激活码已过期！");    
 	                }    
 	            } else {  
-	               throw new ServiceException("邮箱早已激活，请登录！");    
+	               throw new ServiceException("404---该链接失效");    
 	            }    
 	        } else {  
 	            throw new ServiceException("该邮箱未注册（邮箱地址不存在）！");    
 	        }      
 	    }
+
+		@Override
+		public User getUserByEmailAndValidate(String email, String validateCode) {
+			// TODO Auto-generated method stub
+			Query query = new Query();  
+	        query.addCriteria(Criteria.where("email").is(email));  
+	        query.addCriteria(Criteria.where("validateCode").is(validateCode));
+	        User user = mongoTemplate.findOne(query, User.class);  
+	        return user;
+		}
 	}
 

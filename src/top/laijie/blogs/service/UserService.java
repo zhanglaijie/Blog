@@ -29,4 +29,5 @@ public interface UserService{
 	  */
 	 public User getUserByEmail(String email);
 	User getUserByblogaddress(String blogaddress);
+	User getUserByEmailAndValidate(String email, String validateCode);
 }

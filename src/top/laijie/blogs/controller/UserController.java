@@ -1,11 +1,11 @@
 package top.laijie.blogs.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Logger;  
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.bson.json.JsonWriter;
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Controller;  
@@ -19,26 +19,12 @@ import top.laijie.blogs.domain.User;
 import top.laijie.blogs.service.impl.UserServiceImpl;
 import top.laijie.blogs.tool.Page;
 
-
-   
-   
 @Controller  
 @RequestMapping("/user") 
 public class UserController {  
-       
-       
-    private static Logger logger = Logger.getLogger(UserController.class.getName());  
-       
+	private static Logger logger = Logger.getLogger(UserController.class.getName());     
     @Autowired  
-    UserServiceImpl userService;  
-       
-    @RequestMapping("/index")
-    public String index(){  
-    	System.out.println("---");
-    	Page<User> page =  userService.getPage(1,5,new User());
-    	System.out.println(page.getDatas().size());
-        return "MyJsp.jsp";
-    }  
+    UserServiceImpl userService;   
     /**
      * 管理页面
      * @return
@@ -123,7 +109,7 @@ public class UserController {
         if (error == true) {  
             // Assign an error message  
             model.put("error",  
-                    "账号或密码错误");  
+                    "未验证或密码错误");  
         } else {  
             model.put("error", "");  
         }  
