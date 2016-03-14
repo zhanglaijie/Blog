@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import top.laijie.blogs.domain.Posts;
 import top.laijie.blogs.service.PostsService;
 import top.laijie.blogs.service.UserService;
-
+/**
+ * 文章管理
+ * @author laijie
+ *
+ */
 @Controller  
 @RequestMapping("/posts") 
 public class PostsController {
