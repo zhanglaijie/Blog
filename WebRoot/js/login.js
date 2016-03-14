@@ -30,7 +30,7 @@ $(document).ready(function() {
 		                    		var res = true; 
 		                    		if (value.match(/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/i)) {
 		                    			$.ajax({ 
-		                    			url: 'user/register/checkemail', 
+		                    			url: 'user/register/checkemail.do', 
 		                    			type: 'post', 
 		                    			dataType: 'json', 
 		                    			async: false, 
@@ -93,17 +93,17 @@ $(document).ready(function() {
 		                    	callback: function (value, validator) { 
 		                    		var res = true; 
 		                    		$.ajax({ 
-		                    			url: 'user/register/checkblogaddress', 
+		                    			url: 'user/register/checkblogaddress.do', 
 		                    			type: 'post', 
 		                    			dataType: 'json', 
 		                    			async: false, 
 		                    			data: {blogaddress: value}, 
 		                    			success:
 		                    				function (data) {
-		                    				//alert(data.status);
+		                    				alert(data.status);
 		                    				if (data.status != 'success'){
 		                    					res = false;
-		                    					//alert(res);
+		                    					alert(res);
 		                    					} 
 		                    				} 
 		                    			}); 

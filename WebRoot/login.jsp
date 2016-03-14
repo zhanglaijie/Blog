@@ -1,8 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page contentType="text/html;charset=utf-8"%>
+<%@include file="/WEB-INF/jsp/taglib.jsp" %>
 <!DOCTYPE HTML>
 <html lang="zh-CN">
   <head>
@@ -12,9 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>壹博客登陆系统</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="<%=basePath%>/validator/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<%=basePath%>/validator/dist/css/bootstrapValidator.css"/>
-	<link rel="stylesheet" href="<%=basePath%>/css/login.css">
+    <link rel="stylesheet" href="${ctx}/validator/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${ctx}/validator/dist/css/bootstrapValidator.css"/>
+	<link rel="stylesheet" href="${ctx}/css/login.css">
   </head>
   <body>
 	<div class="container">
@@ -41,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="panel-92846">
-						<form id="login-form" action="<%=basePath%>j_spring_security_check" method="post" class="form-horizontal" role="form">
+						<form id="login-form" action="${ctx}/j_spring_security_check" method="post" class="form-horizontal" role="form">
 							<div class="form-group">
 								 <label for="j_username" class="col-sm-3 control-label">
 									<span class="glyphicon glyphicon-user"></span> 用户
@@ -79,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</form>
 					</div>
 					<div class="tab-pane" id="panel-556995">
-						<form id="register-form" class="form-horizontal" role="form" action="<%=basePath%>user/register" method="post">
+						<form id="register-form" class="form-horizontal" role="form" action="${ctx}/user/register" method="post">
 							<div class="form-group">
 								 <label for="inputEmail3" class="col-sm-4 control-label">
 								 <span class="glyphicon glyphicon-envelope"></span>邮箱地址</label>
@@ -138,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 弹出窗口 start -->
 	<div class="modal fade" id="modal-container-657474" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-				<form id="email-form" action="<%=basePath%>user/tofindPasswdByEmail.do" method="post"
+				<form id="email-form" action="${ctx}/user/tofindPasswdByEmail.do" method="post"
 					class="form-horizontal" role="form">
 					<div class="modal-content" style="width: 350px;">
 						<div class="modal-header">
@@ -177,10 +174,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- end -->
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="<%=basePath%>/validator/vendor/jquery/jquery.min.js"></script>
+    <script src="${ctx}/validator/vendor/jquery/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<%=basePath%>/validator/vendor/bootstrap/js/bootstrap.min.js"></script>
-  	<script type="text/javascript" src="<%=basePath%>/validator/dist/js/bootstrapValidator.js"></script>
-  	<script type="text/javascript" src="<%=basePath%>/js/login.js"></script>
+    <script src="${ctx}/validator/vendor/bootstrap/js/bootstrap.min.js"></script>
+  	<script type="text/javascript" src="${ctx}/validator/dist/js/bootstrapValidator.js"></script>
+  	<script type="text/javascript" src="${ctx}/js/login.js"></script>
   </body>
 </html>

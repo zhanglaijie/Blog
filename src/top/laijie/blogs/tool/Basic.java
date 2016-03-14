@@ -1,18 +1,14 @@
 package top.laijie.blogs.tool;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 public class Basic {
 	
+	
+	//private String id;
 	@Id
-	private String id;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	private ObjectId _id;
+	
 	
 }

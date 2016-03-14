@@ -14,6 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<%=basePath%>/validator/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<%=basePath%>/validator/dist/css/bootstrapValidator.css"/>
+	<link rel="stylesheet" href="<%=basePath%>/css/front/frontIndex.css"/>
   </head>
   <body>
 			<div class="container">
@@ -177,6 +178,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 			</div>
+	<div id="footer">
+        <a href="http://www.cnblogs.com/ContactUs.aspx">联系我们</a><a href="http://group.cnblogs.com/forum/public/">反馈问题</a>©2016<a href="http://www.cnblogs.com">博客园</a>/ 代码改变世界
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<%=basePath%>/validator/vendor/jquery/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

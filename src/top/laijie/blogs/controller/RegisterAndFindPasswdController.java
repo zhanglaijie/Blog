@@ -63,7 +63,7 @@ public class RegisterAndFindPasswdController {
         return mav;  
     }  
      // 验证邮箱
-    @RequestMapping(value="/register/checkemail",method={RequestMethod.GET,RequestMethod.POST})  
+    @RequestMapping(value="/register/checkemail.do",method={RequestMethod.GET,RequestMethod.POST})  
     public void  checkemail(HttpServletRequest request,HttpServletResponse response){  
     	User user = null;
     	String email = request.getParameter("email");
@@ -84,7 +84,7 @@ public class RegisterAndFindPasswdController {
 		}
     }
     //验证邮件地址/register/checkblogaddress
-    @RequestMapping(value="/register/checkblogaddress",method={RequestMethod.GET,RequestMethod.POST})  
+    @RequestMapping(value="/register/checkblogaddress.do",method={RequestMethod.GET,RequestMethod.POST})  
     public void  checkblogaddress(HttpServletRequest request,HttpServletResponse response){  
     	User user = null;
     	String blogaddress = request.getParameter("blogaddress");

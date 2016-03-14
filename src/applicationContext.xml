@@ -56,6 +56,6 @@
         <constructor-arg ref="mongo" />
         <constructor-arg name="databaseName" value="Blogs" />
     </bean>    
-      
+    <!-- Web服务器的defaultServlet来处理静态文件 -->  
     <mvc:default-servlet-handler/> 
 </beans>

@@ -141,6 +141,8 @@ public class BasicService<T> {
 		protected  Class<T> getEntityClass(){
 			return (Class<T>) Object.class;
 		}
+		/**
+		 * 获取一条数据
+		 */
 		
-
 }
