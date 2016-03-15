@@ -1,10 +1,10 @@
 package top.laijie.blogs.domain;
 
-import java.beans.Transient;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import top.laijie.blogs.tool.Basic;

@@ -15,12 +15,8 @@
   </head>
   <body>
 	<div class="container">
-		<div class="row clearfix">
-			<div class="col-md-12 column">
-				<h3>
-					壹博客. 这是一个博客.
-				</h3>
-			</div>
+		<div class="login">
+		<h1><a>壹博客</a></h1>
 		</div>
 	<div class="row clearfix login-position">
 		<div class="col-md-4 column">
