@@ -2,13 +2,22 @@ package top.laijie.blogs.domain;
 
 import java.io.Serializable;
 
-import top.laijie.blogs.tool.Basic;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Reference;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import top.laijie.blogs.tool.Basic;
+@Document
 public class Categories extends Basic implements Serializable{
+	private static final long serialVersionUID = -8755669364939904701L;
 	/**
 	 * 分类
 	 */
-	private static final long serialVersionUID = -8755669364939904701L;
+	@Reference
+	private User user;
 	private int Parents;
 	private String title;
 	private String description;
@@ -39,20 +48,36 @@ public class Categories extends Basic implements Serializable{
 		this.count = count;
 	}
 	public Categories() {
-		super();
+		_id= new ObjectId();
 		// TODO Auto-generated constructor stub
 	}
-	public Categories(String title, String description, int visible, int count) {
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public int getParents() {
+		return Parents;
+	}
+	public void setParents(int parents) {
+		Parents = parents;
+	}
+	@Override
+	public String toString() {
+		return "Categories [user=" + user + ", Parents=" + Parents + ", title="
+				+ title + ", description=" + description + ", visible="
+				+ visible + ", count=" + count + "]";
+	}
+	public Categories(User user, int parents, String title, String description,
+			int visible, int count) {
 		super();
+		this.user = user;
+		Parents = parents;
 		this.title = title;
 		this.description = description;
 		this.visible = visible;
 		this.count = count;
-	}
-	@Override
-	public String toString() {
-		return "Categories [title=" + title + ", description=" + description
-				+ ", visible=" + visible + ", count=" + count + "]";
 	}
 	
 }

@@ -20,7 +20,7 @@ import top.laijie.blogs.service.UserService;
  *
  */
 @Controller  
-@RequestMapping("/posts") 
+@RequestMapping("/postsController") 
 public class PostsController {
 	 private static Logger logger = Logger.getLogger(UserController.class.getName());  
 	 @Resource  

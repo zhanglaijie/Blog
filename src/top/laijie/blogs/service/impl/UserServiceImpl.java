@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;  
 
 import top.laijie.blogs.controller.RegisterAndFindPasswdController;
+import top.laijie.blogs.domain.Categories;
 import top.laijie.blogs.domain.User;
 import top.laijie.blogs.service.UserService;
 import top.laijie.blogs.tool.BasicService;
@@ -166,6 +167,10 @@ import top.laijie.blogs.tool.ServiceException;
 	        query.addCriteria(Criteria.where("validateCode").is(validateCode));
 	        User user = mongoTemplate.findOne(query, User.class);  
 	        return user;
+		}
+		
+		protected  Class<User> getEntityClass(){
+			return User.class;
 		}
 	}
 

@@ -8,7 +8,15 @@ public class Basic {
 	
 	//private String id;
 	@Id
-	private ObjectId _id;
+	protected ObjectId _id;
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
 	
 	
 }
