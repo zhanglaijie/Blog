@@ -15,15 +15,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<%=basePath%>/validator/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<%=basePath%>/validator/dist/css/bootstrapValidator.css"/>
+ 	<link rel="stylesheet" href="${ctx}/css/login.css">
   </head>
   <body>
 			<div class="container">
-				<div class="row clearfix">
-					<div class="col-md-12 column">
-						<h3>
-						壹博客系统 OneBlogs
-					</h3>
-				</div>
+				<div class="login">
+				<h1><a>壹博客</a></h1>
 			</div>
 			<div class="row clearfix">
 				<div class="col-md-4 column">
