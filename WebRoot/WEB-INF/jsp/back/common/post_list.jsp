@@ -32,13 +32,21 @@
 <ul class="pagination mypage">
 	<c:choose>
 		<c:when test="${postPage.pageNo!= '1'}">
-			<li><a href="${ctx}/postsController/listPosts.do?pageNo=<c:out value="${postPage.pageNo-1}"/>">Prev</a></li>
+			<li><a href="${ctx}/postsController/listPosts.do?pageNo=<c:out value="${postPage.pageNo-1}"/>">上一页</a></li>
+		</c:when>
+		<c:when test="${postPage.pageNo== '1'}">
+			<li class="disabled"><a>上一页</a></li>
 		</c:when>
 	</c:choose>
-	<li><a href="${ctx}/postsController/listPosts.do?pageNo=<c:out value="${postPage.pageNo}"/>">
+	<li class="active"><a href="${ctx}/postsController/listPosts.do?pageNo=<c:out value="${postPage.pageNo}"/>">
 		<c:out value="${postPage.pageNo}"/></a></li>
-	<!-- <c:when test="${postPage.pageNo == postPage.totalPage}">
-			<li><a href="${ctx}/postsController/listPosts.do?pageNo=<c:out value="${postPage.pageNo+1}"/>">Next</a></li>
-	</c:when> -->
+	<c:choose>	
+		<c:when test="${postPage.pageNo != postPage.totalPage}">
+				<li><a href="${ctx}/postsController/listPosts.do?pageNo=<c:out value="${postPage.pageNo+1}"/>">下一页</a></li>
+		</c:when>
+		<c:when test="${postPage.pageNo == postPage.totalPage}">
+				<li class="disabled"><a>下一页</a></li>
+		</c:when>
+	</c:choose>
 	
 </ul>

@@ -36,20 +36,31 @@ public class PostsController {
 		Posts posts = service.loadPosts(_id); 
 		logger.info(posts.toString());
 	 }
-	 
+	 /**
+	  * 导航到新建文章
+	  */
+	 @RequestMapping(value="/createPostNavigation.do",method={RequestMethod.GET,RequestMethod.POST})  
+	 public String createPostNavigation(){
+		return "back/add_post.jsp";
+	 }
 	 @RequestMapping(value="/createPost.do",method={RequestMethod.GET,RequestMethod.POST})  
 	 public void createPost(){
-		
-		//Posts posts = new Posts("伟大的一天", "假如我", "我",0,"随笔","张来杰", new Date(), new Date(),"文学 艺术",300);
-		//service.createPost(posts);
-		//logger.info(posts.toString());
+		for(int i = 0 ;i<100;i++){
+			Posts posts = new Posts(i+"伟大的一天"+new Date(), "假如我", "我",0,"随笔","张来杰", new Date(), new Date(),"文学 艺术",300, 0);
+			service.createPost(posts);
+			logger.info(posts.toString());
+		}
 	 }
 	 
 	 @RequestMapping(value="/listPosts.do",method={RequestMethod.GET,RequestMethod.POST})  
 	 public String listPost(HttpServletRequest request,ModelMap map){
 		String pageNum = request.getParameter("pageNo");
+		int pageNo = 1;
+		if(pageNum!=null&&!pageNum.equals("")){
+			pageNo = Integer.parseInt(pageNum);
+		}
 		Query query = new Query();
-		Page<Posts> postPage = service.listPost(1, query);
+		Page<Posts> postPage = service.listPost(pageNo, query);
 		logger.info(postPage.toString());
 		map.addAttribute("postPage",postPage);
 		return "back/index.jsp";

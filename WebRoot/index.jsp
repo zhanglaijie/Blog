@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8"%>
-<jsp:forward page="/front/index.do"></jsp:forward>
+<jsp:forward page="/postsController/listPosts.do"></jsp:forward>
 <%--<%@ page contentType="text/html;charset=utf-8"%>
 <%@include file="/WEB-INF/jsp/taglib.jsp" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
