@@ -27,13 +27,13 @@ public class BasicService<T> {
 		 * @param query
 		 * @return
 		 */
-		public Page<T> getPage(int pageNo, int pageSize,T t) {
-			 Query query = new Query();
-			long totalCount = this.mongoTemplate.count(query,((Basic)t).getClass());
+		public Page<T> getPage(int pageNo, int pageSize,Query query) {
+			long totalCount = this.mongoTemplate.count(query,this.getEntityClass());
 			Page<T> page = new Page<T>(pageNo, pageSize, totalCount);
-			query.skip(1);// skip相当于从那条记录开始
+			int skipnum = (pageNo-1)*pageSize;
+			query.skip(skipnum);// skip相当于从那条记录开始
 			query.limit(pageSize);// 从skip开始,取多少条记录
-			List<T> datas = (List<T>) mongoTemplate.find(query,((Basic)t).getClass());
+			List<T> datas = (List<T>) mongoTemplate.find(query,this.getEntityClass());
 			page.setDatas(datas);
 			return page;
 		}
@@ -64,7 +64,7 @@ public class BasicService<T> {
 		 * @return
 		 */
 		public List<T> findAll() {
-			return this.mongoTemplate.findAll(getEntityClass());
+			return this.mongoTemplate.findAll(this.getEntityClass());
 		}
 
 		/**

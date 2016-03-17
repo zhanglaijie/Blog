@@ -28,6 +28,7 @@ public class Posts extends Basic implements Serializable{
 	private Date modifieddate;
 	private String tags;
 	private int comment_count;
+	private int read_count;
 	public String getTitle() {
 		return title;
 	}
@@ -88,17 +89,28 @@ public class Posts extends Basic implements Serializable{
 	public void setComment_count(int comment_count) {
 		this.comment_count = comment_count;
 	}
+	public int getRead_count() {
+		return read_count;
+	}
+	public void setRead_count(int read_count) {
+		this.read_count = read_count;
+	}
+	public Posts() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Posts [title=" + title + ", content=" + content + ", excerpt="
 				+ excerpt + ", status=" + status + ", type=" + type
 				+ ", author=" + author + ", postdate=" + postdate
 				+ ", modifieddate=" + modifieddate + ", tags=" + tags
-				+ ", comment_count=" + comment_count + "]";
+				+ ", comment_count=" + comment_count + ", read_count="
+				+ read_count + "]";
 	}
 	public Posts(String title, String content, String excerpt, int status,
 			String type, String author, Date postdate, Date modifieddate,
-			String tags, int comment_count) {
+			String tags, int comment_count, int read_count) {
 		super();
 		this.title = title;
 		this.content = content;
@@ -110,11 +122,7 @@ public class Posts extends Basic implements Serializable{
 		this.modifieddate = modifieddate;
 		this.tags = tags;
 		this.comment_count = comment_count;
+		this.read_count = read_count;
 	}
-	public Posts() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 }
 	

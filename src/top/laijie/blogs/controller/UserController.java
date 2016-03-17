@@ -32,8 +32,8 @@ public class UserController {
     @RequestMapping("/admin")
     public String admin(){  
     	System.out.println("---");
-    	Page<User> page =  userService.getPage(1,5,new User());
-    	System.out.println(page.getDatas().size());
+    //	Page<User> page =  userService.getPage(1,5,new User());
+    //	System.out.println(page.getDatas().size());
         return "/front/laijie.jsp";
     }     
     @RequestMapping("/save")  
@@ -42,6 +42,11 @@ public class UserController {
     	userService.save(user); 
            
         logger.info("save:"+user);   
+        return "/back/index.jsp";
+    }  
+    @RequestMapping("/backIndex.do")  
+    public String back(User user){  
+         
         return "/back/index.jsp";
     }  
        
