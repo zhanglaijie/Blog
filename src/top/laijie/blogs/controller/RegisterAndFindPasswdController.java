@@ -139,4 +139,20 @@ public class RegisterAndFindPasswdController {
       		return "register/findpasswd_page.jsp";
     	}
     }
+    @RequestMapping("/savePasswd.do")
+    public String savePasswd(ModelMap map,HttpServletRequest request,HttpServletResponse response){  
+    	User user = null;
+    	String email = request.getParameter("email");
+    	/*String validateCode = request.getParameter("validateCode");//激活码  
+    	user = service.getUserByEmailAndValidate(email,validateCode);
+    	if(user==null){
+    		map.addAttribute("message", "404----该链接失效,请重新操作!");
+   		 	return "register/activate_failure.jsp";
+    	}else{
+    		logger.info(user.toString());
+    		map.addAttribute("user", user);
+      		return "register/findpasswd_page.jsp";
+    	}*/
+    	return null;
+    }
 }  
