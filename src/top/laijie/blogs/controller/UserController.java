@@ -18,13 +18,34 @@ import org.springframework.web.servlet.ModelAndView;
 import top.laijie.blogs.domain.User;
 import top.laijie.blogs.service.impl.UserServiceImpl;
 import top.laijie.blogs.tool.Page;
+import top.laijie.blogs.tool.UserUtils;
 
 @Controller  
-@RequestMapping("/user") 
+@RequestMapping("/userController") 
 public class UserController {  
 	private static Logger logger = Logger.getLogger(UserController.class.getName());     
     @Autowired  
     UserServiceImpl userService;   
+    
+    /** 
+     * 指向登录页面 
+     */  
+    @RequestMapping(value = "/login.do")  
+    public String getLoginPage( @RequestParam(value = "error" , required = false) boolean error,  
+            ModelMap model) {  
+  
+        logger.info("Received request to show login page");  
+  
+        if (error == true) {  
+            // Assign an error message  
+            model.put("error",  
+                    "未验证或密码错误");  
+        } else {  
+            model.put("error", "");  
+        }  
+        return "/login.jsp";  
+  
+    }  
     /**
      * 管理页面
      * @return
@@ -87,6 +108,7 @@ public class UserController {
     @RequestMapping(value = "/common", method = RequestMethod.GET)  
     public String getCommonPage() {  
         logger.info("Received request to show common page");  
+        logger.info(UserUtils.getCurrentLoginName());
         return "/authority/commonpage.jsp";  
     }  
   
@@ -101,27 +123,7 @@ public class UserController {
         return "/authority/adminpage.jsp";  
   
     }  
-    
-    /** 
-     * 指向登录页面 
-     */  
-    @RequestMapping(value = "/login", method = RequestMethod.GET)  
-    public String getLoginPage( @RequestParam(value = "error" , required = false) boolean error,  
-            ModelMap model) {  
-  
-        logger.info("Received request to show login page");  
-  
-        if (error == true) {  
-            // Assign an error message  
-            model.put("error",  
-                    "未验证或密码错误");  
-        } else {  
-            model.put("error", "");  
-        }  
-        return "../../login.jsp";  
-  
-    }  
-  
+
     /** 
      * 指定无访问额权限页面 
      *  

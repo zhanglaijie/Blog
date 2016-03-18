@@ -100,7 +100,7 @@ $(document).ready(function() {
 		                    			data: {blogaddress: value}, 
 		                    			success:
 		                    				function (data) {
-		                    				alert(data.status);
+		                    				//alert(data.status);
 		                    				if (data.status != 'success'){
 		                    					res = false;
 		                    					alert(res);

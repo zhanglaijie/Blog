@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Controller;
@@ -56,7 +57,7 @@ public class PostsController {
 	 public String listPost(HttpServletRequest request,ModelMap map){
 		String pageNum = request.getParameter("pageNo");
 		int pageNo = 1;
-		if(pageNum!=null&&!pageNum.equals("")){
+		if(StringUtils.isNotBlank(pageNum)){
 			pageNo = Integer.parseInt(pageNum);
 		}
 		Query query = new Query();

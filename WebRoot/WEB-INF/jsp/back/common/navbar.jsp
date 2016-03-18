@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8"%>
+<%@include file="/WEB-INF/jsp/taglib.jsp" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div class="row clearfix">
 		<div class="col-md-12 column">
 			<nav class="navbar mynav navbar-fixed-top" role="navigation">
@@ -47,7 +49,7 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">雄霸天下<strong class="caret"></strong></a>
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><sec:authentication property="name"></sec:authentication><strong class="caret"></strong></a>
 							<ul class="dropdown-menu">
 								<li>
 									 <a href="#">个人中心</a>
@@ -61,12 +63,12 @@
 								<li class="divider">
 								</li>
 								<li>
-									 <a href="#">退出</a>
+									 <a href="${ctx}/userController/logout.do">退出</a>
 								</li>
 							</ul>
 						</li>
 						<li>
-							 <a class="myblog" href="#">我的博客</a>
+							 <a class="myblog" href="${ctx}/myBlogs">我的博客</a>
 						</li>
 						<li>
 							 &nbsp;&nbsp;&nbsp;&nbsp;

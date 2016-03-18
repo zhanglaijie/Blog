@@ -27,7 +27,7 @@ public interface UserService{
 	 /**
 	  * 用邮箱获取User
 	  */
-	 public User getUserByEmail(String email);
-	User getUserByblogaddress(String blogaddress);
-	User getUserByEmailAndValidate(String email, String validateCode);
+	public User getUserByEmail(String email);
+	public User getUserByblogaddress(String blogaddress);
+	public User getUserByEmailAndValidate(String email, String validateCode);
 }
