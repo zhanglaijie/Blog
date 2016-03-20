@@ -1,5 +1,6 @@
 package top.laijie.blogs.tool;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;  
 import java.util.Properties;  
   
@@ -55,9 +56,15 @@ public class SendEmail {
             System.out.println("--send--"+content);  
             // Instantiate a message  
             Message msg = new MimeMessage(session);  
-   
+            String nick="";  
+            try {  
+                nick=javax.mail.internet.MimeUtility.encodeText("壹博客");  
+            } catch (UnsupportedEncodingException e) {  
+                e.printStackTrace();  
+            }   
+            msg.setFrom(new InternetAddress(nick+" <"+FROM+">"));  
             //Set message attributes  
-            msg.setFrom(new InternetAddress(FROM));  
+           // msg.setFrom(new InternetAddress(FROM));  
             InternetAddress[] address = {new InternetAddress(toEmail)};  
             msg.setRecipients(Message.RecipientType.TO, address);  
             msg.setSubject(subject);  

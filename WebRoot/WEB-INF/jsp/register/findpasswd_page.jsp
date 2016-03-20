@@ -20,7 +20,7 @@
 	<div class="container">
 		<div class="login">
 			<h1>
-				<a>壹博客</a>
+				<a href="${ctx}/postsController/listPosts.do">壹博客</a>
 			</h1>
 		</div>
 		<div class="row clearfix">
@@ -28,9 +28,9 @@
 			<div class="col-md-6 column" style="margin-top: 120px;">
 				<div class="jumbotron" style="background-color:#fff;border:1px solid #d4dfe7">
 					<h3>重设密码</h3>
-					<form id="input-passwd" class="form-horizontal" action="${ctx}/user/savePasswd.do" method="post" role="form">
+					<form id="input-passwd" action="${ctx}/user/savePasswd.do" class="form-horizontal" method="post" role="form">
 						<div class="form-group">
-							<input type="hidden" id="email" name="email" value="${user.email}" /> <label
+						<label
 								class="col-sm-4 control-label" for="password">
 								<span class="glyphicon glyphicon-lock"></span>用户密码</label>
 							<div class="col-sm-8">
@@ -44,6 +44,13 @@
 							<div class="col-sm-8">
 								<input type="password" class="form-control"
 									id="confirmpassword" name="confirmpassword" placeholder="请再次输入密码">
+							</div>
+						</div>
+						<div class="form-group" style="display:none;">
+							<label class="col-sm-4 control-label" for="confirmpassword">
+								<span class="glyphicon glyphicon-lock"></span>确认密码</label>
+							<div class="col-sm-8">
+								<input type="text" id="email" name="email" value="${user.email}" /> 
 							</div>
 						</div>
 						<div class="form-group">

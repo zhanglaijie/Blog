@@ -10,6 +10,8 @@ public interface UserService{
 	
 	 User findUserByName(String name);
 	 public void updateUserByName(String nicename);
+	 
+	 public void updateUserByEmail(String Email);
 	 /** 
 	     * 处理注册 
 	     */

@@ -37,7 +37,7 @@
 				<div class="form-group">
 					 <label for="title" class="control-label">标题:</label>
 					 <div>
-					 	<input class="form-control" id="title" type="text" />
+					 	<input class="form-control" id="title" name="title" type="text" />
 					 </div>
 				</div>
 				<div class="form-group">
@@ -73,7 +73,17 @@
 	  		});
 	  	 
 	  	 $("#sub").click(function(){
-	  		 alert($('#summernote').summernote('code'));
+			var content = $('#summernote').summernote('code');
+			var title =$('#title').val();
+			$.ajax({
+				type:"POST",
+				url:"${ctx}/postsController/createPost.do",
+				data:{'title':title,'content':content},
+				dataType: 'json',
+				success:function(msg){
+					alert(msg.status);
+				}
+			});
 	  	 });
 	  	});
   	</script>

@@ -1,7 +1,7 @@
 $(document).ready(function() {
-		   //注册表单验证
+		   //找回密码验证
 		    $('#input-passwd').bootstrapValidator({
-		//        live: 'disabled',
+		    	// live: 'disabled',
 		        message: 'This value is not valid',
 		        feedbackIcons: {
 		            valid: 'glyphicon glyphicon-ok',
@@ -9,6 +9,13 @@ $(document).ready(function() {
 		            validating: 'glyphicon glyphicon-refresh'
 		        },
 		        fields: {
+		        	email:{
+		        		validators:{
+		        			notEmpty:{
+		        				message:'no'
+		        			}
+		        		}
+		        	},
 		            password: {
 		                validators: {
 		                    notEmpty: {

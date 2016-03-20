@@ -22,11 +22,11 @@
 					</h3>
 				</div>
 			</div>
-			<div class="row clearfix">
+			<div class="row clearfix" >
 				<div class="col-md-4 column">
 				</div>
-				<div class="col-md-4 column">
-					<div class="jumbotron">
+				<div class="col-md-4 column" style="margin-top: 70px;">
+					<div class="jumbotron" style="border: 1px solid #ddd;">
 						<h3>
 							请确认你的邮箱,只差一步你的邮箱注册就成功啦
 						</h3>

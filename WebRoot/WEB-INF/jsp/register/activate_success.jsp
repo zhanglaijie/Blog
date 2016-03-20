@@ -27,7 +27,7 @@
 				</div>
 				<div class="col-md-4 column">
 					<div class="jumbotron">
-						<h3><a href="${ctx}<c:out value="/index.jsp"></c:out>">激活成功，请登录</a></h3>
+						<h3><a href="${ctx}<c:out value="/index.jsp"></c:out>"><c:out value="${message}"></c:out></a></h3>
 					</div>
 				</div>
 				<div class="col-md-4 column">

@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import top.laijie.blogs.domain.User;
 import top.laijie.blogs.service.UserService;
+import top.laijie.blogs.service.impl.UserServiceImpl;
+import top.laijie.blogs.tool.MD5Util;
 import top.laijie.blogs.tool.Page;
 import top.laijie.blogs.tool.ServiceException;
   
@@ -26,7 +28,7 @@ import top.laijie.blogs.tool.ServiceException;
 public class RegisterAndFindPasswdController {  
 	private static Logger logger = Logger.getLogger(RegisterAndFindPasswdController.class.getName());    
     @Resource  
-    private UserService service;  
+    private UserServiceImpl service;  
       
     @RequestMapping(value="/register",method={RequestMethod.GET,RequestMethod.POST})  
     public ModelAndView  register(HttpServletRequest request,HttpServletResponse response,User user) throws ParseException{  
@@ -53,6 +55,7 @@ public class RegisterAndFindPasswdController {
               
             try {  
                 service.processActivate(email , validateCode);//调用激活方法  
+                request.setAttribute("message" ,"激活成功,请登录");
                 mav.setViewName("register/activate_success.jsp");  
             } catch (ServiceException e) {  
                 request.setAttribute("message" , e.getMessage());  
@@ -143,16 +146,18 @@ public class RegisterAndFindPasswdController {
     public String savePasswd(ModelMap map,HttpServletRequest request,HttpServletResponse response){  
     	User user = null;
     	String email = request.getParameter("email");
-    	/*String validateCode = request.getParameter("validateCode");//激活码  
-    	user = service.getUserByEmailAndValidate(email,validateCode);
+    	String password = request.getParameter("password");
+    	logger.info("---");
+    	user = service.getUserByEmail(email);
     	if(user==null){
     		map.addAttribute("message", "404----该链接失效,请重新操作!");
    		 	return "register/activate_failure.jsp";
     	}else{
     		logger.info(user.toString());
-    		map.addAttribute("user", user);
-      		return "register/findpasswd_page.jsp";
-    	}*/
-    	return null;
+    		user.setPassword(MD5Util.encode2hex(password));
+    		service.save(user);
+    		map.addAttribute("message", "密码修改成功,请登陆");
+      		return "register/activate_success.jsp";
+    	}
     }
 }  

@@ -16,7 +16,7 @@
   <body>
 	<div class="container">
 		<div class="login">
-		<h1><a>壹博客</a></h1>
+		<h1><a href="${ctx}/postsController/listPosts.do">壹博客</a></h1>
 		</div>
 	<div class="row clearfix login-position">
 		<div class="col-md-4 column">
@@ -62,7 +62,7 @@
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
 									  
-									 <button type="submit"  class="btn btn-info">登陆</button>
+									 <button type="submit"  class="btn btn-primary">登陆</button>
 									 <button type="reset" id="loginReset" class="btn btn-info">取消</button>
 									 
 									 <a id="modal-657474" href="#modal-container-657474" 

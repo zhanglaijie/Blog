@@ -1,11 +1,14 @@
 package top.laijie.blogs.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.bson.types.ObjectId;
@@ -19,6 +22,7 @@ import top.laijie.blogs.domain.Posts;
 import top.laijie.blogs.service.PostsService;
 import top.laijie.blogs.service.UserService;
 import top.laijie.blogs.tool.Page;
+import top.laijie.blogs.tool.UserUtils;
 /**
  * 文章管理
  * @author laijie
@@ -45,11 +49,23 @@ public class PostsController {
 		return "back/add_post.jsp";
 	 }
 	 @RequestMapping(value="/createPost.do",method={RequestMethod.GET,RequestMethod.POST})  
-	 public void createPost(){
-		for(int i = 0 ;i<100;i++){
-			Posts posts = new Posts(i+"伟大的一天"+new Date(), "假如我", "我",0,"随笔","张来杰", new Date(), new Date(),"文学 艺术",300, 0);
+	 public void createPost(HttpServletRequest request,HttpServletResponse response){
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		content = request.getParameter("content");
+		Posts posts = new Posts();
+		posts.setTitle(title);
+		posts.setContent(content);
+		posts.setAuthor(UserUtils.getCurrentLoginName());
+		posts.setPostdate(new Date());
+		service.createPost(posts);
+		PrintWriter writer = null;
+		try {
 			service.createPost(posts);
-			logger.info(posts.toString());
+			writer = response.getWriter();
+			writer.write("{\"status\":\"success\"}");
+		} catch (IOException e) {
+			writer.write("{\"status\":\"success\"}");
 		}
 	 }
 	 
