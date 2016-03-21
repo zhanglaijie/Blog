@@ -70,7 +70,11 @@ public class UserController {
          
         return "/back/index.jsp";
     }  
-       
+    /**
+     * 指向个人信息明细   
+     * @param user
+     * @return
+     */
     @RequestMapping("/find")  
     public String findUser(User user){  
            
