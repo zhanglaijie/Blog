@@ -141,4 +141,12 @@ public class UserController {
         return "/authority/deniedpage.jsp";  
   
     }  
+    /**
+     * About_me
+     */
+    @RequestMapping("about_me.do")
+    public String about_me(){
+    	
+		return "/back/about_me.jsp";
+    }
 }  

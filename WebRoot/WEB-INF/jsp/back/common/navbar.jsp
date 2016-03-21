@@ -49,7 +49,10 @@
 					</form>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><sec:authentication property="name"></sec:authentication><strong class="caret"></strong></a>
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								 <sec:authentication property="name"></sec:authentication>
+								 <strong class="caret"></strong>
+							 </a>
 							<ul class="dropdown-menu">
 								<li>
 									 <a href="#">个人中心</a>
