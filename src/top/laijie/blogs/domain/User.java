@@ -30,6 +30,7 @@ public class User extends Basic implements Serializable{
     private Date  registerTime;//注册时间 
     private String blogname;
     private String blogaddress;
+    private String blogsubname;
     /**
      * 权限 auth ：0-普通用户
      * 			 1- 管理员

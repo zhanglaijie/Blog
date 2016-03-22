@@ -55,7 +55,7 @@
 							 </a>
 							<ul class="dropdown-menu">
 								<li>
-									 <a href="#">个人中心</a>
+									 <a href="${ctx}/userController/about_me.do">个人中心</a>
 								</li>
 								<li>
 									 <a href="#">账号设置</a>

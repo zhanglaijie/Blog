@@ -145,8 +145,17 @@ public class UserController {
      * About_me
      */
     @RequestMapping("about_me.do")
-    public String about_me(){
-    	
+    public String about_me(ModelMap map){
+    	String email = UserUtils.getCurrentLoginName();
+    	User user = userService.getUserByEmail(email);
+    	map.addAttribute("user",user);
 		return "/back/about_me.jsp";
+    }
+    /**
+     * 完善资料
+     * @return 
+     */
+    public void prefect_info(){
+    	
     }
 }  

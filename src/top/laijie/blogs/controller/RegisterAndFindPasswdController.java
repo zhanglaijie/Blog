@@ -55,8 +55,9 @@ public class RegisterAndFindPasswdController {
               
             try {  
                 service.processActivate(email , validateCode);//调用激活方法  
-                request.setAttribute("message" ,"激活成功,请登录");
-                mav.setViewName("register/activate_success.jsp");  
+                User user1 = service.getUserByEmail(email);
+                request.setAttribute("user" ,user1);
+                mav.setViewName("register/prefect_info.jsp");  
             } catch (ServiceException e) {  
                 request.setAttribute("message" , e.getMessage());  
                 mav.setViewName("register/activate_failure.jsp");  

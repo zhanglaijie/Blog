@@ -103,7 +103,7 @@ $(document).ready(function() {
 		                    				//alert(data.status);
 		                    				if (data.status != 'success'){
 		                    					res = false;
-		                    					alert(res);
+		                    					//alert(res);
 		                    					} 
 		                    				} 
 		                    			}); 

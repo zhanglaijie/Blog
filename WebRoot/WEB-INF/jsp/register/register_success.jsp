@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="${ctx}/validator/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${ctx}/validator/dist/css/bootstrapValidator.css"/>
   </head>
-  <body>
+  <body style="background-color:#E9EFF3;">
 			<div class="container">
 				<div class="row clearfix">
 					<div class="col-md-12 column">
@@ -23,10 +23,10 @@
 				</div>
 			</div>
 			<div class="row clearfix" >
-				<div class="col-md-4 column">
+				<div class="col-md-3 column">
 				</div>
-				<div class="col-md-4 column" style="margin-top: 70px;">
-					<div class="jumbotron" style="border: 1px solid #ddd;">
+				<div class="col-md-6 column" style="margin-top: 120px;">
+					<div class="jumbotron" style="background-color:#fff;border:1px solid #d4dfe7">
 						<h3>
 							请确认你的邮箱,只差一步你的邮箱注册就成功啦
 						</h3>
@@ -39,7 +39,7 @@
 						<p><a href="<c:out value="${mailurl}"></c:out>"><c:out value="${mailurl}"></c:out></a></p>
 					</div>
 				</div>
-				<div class="col-md-4 column">
+				<div class="col-md-3 column">
 				</div>
 			</div>
 		</div>

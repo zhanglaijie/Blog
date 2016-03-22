@@ -12,8 +12,9 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${ctx}/validator/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${ctx}/validator/dist/css/bootstrapValidator.css"/>
+	<link rel="stylesheet" href="${ctx}/css/common/common.css">
   </head>
-  <body>
+  <body style="background-color:#E9EFF3;">
 			<div class="container">
 				<div class="row clearfix">
 					<div class="col-md-12 column">
@@ -23,14 +24,14 @@
 				</div>
 			</div>
 			<div class="row clearfix">
-				<div class="col-md-4 column">
+				<div class="col-md-3 column">
 				</div>
-				<div class="col-md-4 column">
-					<div class="jumbotron">
+				<div class="col-md-6 column" style="margin-top: 120px;">
+					<div class="jumbotron" style="background-color:#fff;border:1px solid #d4dfe7">
 						<h3><a href="${ctx}<c:out value="/index.jsp"></c:out>"><c:out value="${message}"></c:out></a></h3>
 					</div>
 				</div>
-				<div class="col-md-4 column">
+				<div class="col-md-3 column">
 				</div>
 			</div>
 		</div>

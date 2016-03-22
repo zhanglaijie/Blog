@@ -8,32 +8,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>壹博客登陆系统</title>
+    <title>壹博客登陆系统--激活失败</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="${ctx}/validator/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${ctx}/validator/dist/css/bootstrapValidator.css"/>
-  	<link rel="stylesheet" href="${ctx}/css/login.css">
+	<link rel="stylesheet" href="${ctx}/css/common/common.css">
   </head>
-  <body style="background-color:#E9EFF3;">
+  <body style="background-color:#E9EFF3;"> 
 			<div class="container">
 				<div class="login">
-				<h1><a>壹博客</a></h1>
+				<h1><a href="${ctx}/postsController/listPosts.do">壹博客</a></h1>
 			</div>
 			<div class="row clearfix">
 				<div class="col-md-3 column">
 				</div>
 				<div class="col-md-6 column" style="margin-top: 120px;">
 					<div class="jumbotron" style="background-color:#fff;border:1px solid #d4dfe7">
-						<h3>
-							请确认你的邮箱,只差一步你的密码找回就成功啦
-						</h3>
-						
-						<p>
-							 <a class="btn btn-warning btn-large" href="<c:out value="${mailurl}"></c:out>">找回密码</a>
-						</p>
-						<p>如果您看不到上方的按钮</p>
-						<p>可点击下面的链接以找回密码，或复制到地址栏打开</p>
-						<p><a href="<c:out value="${mailurl}"></c:out>"><c:out value="${mailurl}"></c:out></a></p>
+						<h3><a href="${ctx}<c:out value="/index.jsp"></c:out>"><c:out value="${message}"></c:out></a></h3>
 					</div>
 				</div>
 				<div class="col-md-3 column">
