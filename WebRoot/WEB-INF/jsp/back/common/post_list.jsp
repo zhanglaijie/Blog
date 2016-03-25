@@ -23,8 +23,8 @@
 			</td>
 			<td><c:out value="${post.read_count}" /></td>
 			<td><c:out value="${post.comment_count}" /></td>
-			<td><a>编辑</a></td>
-			<td><a>删除</a></td>
+			<td><a href="${ctx}/postsController/modifyPostNavigation.do?_id=${post._id}">编辑</a></td>
+			<td><a href="${ctx}/postsController/deletePost.do?_id=${post._id}&pageNo=${postPage.pageNo}">删除</a></td>
 		</tr>
 		</c:forEach>
 	</tbody>

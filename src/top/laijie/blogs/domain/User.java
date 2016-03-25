@@ -112,12 +112,20 @@ public class User extends Basic implements Serializable{
           
         return cl.getTime();  
     }
+	public String getBlogsubname() {
+		return blogsubname;
+	}
+	public void setBlogsubname(String blogsubname) {
+		this.blogsubname = blogsubname;
+	}
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", username=" + username + ", password="
 				+ password + ", nicename=" + nicename + ", email=" + email
 				+ ", status=" + status + ", validateCode=" + validateCode
 				+ ", registerTime=" + registerTime + ", blogname=" + blogname
-				+ ", blogaddress=" + blogaddress + ", auth=" + auth + "]";
+				+ ", blogaddress=" + blogaddress + ", blogsubname="
+				+ blogsubname + ", auth=" + auth + "]";
 	}
+	
 }

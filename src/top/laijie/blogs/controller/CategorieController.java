@@ -35,5 +35,13 @@ public class CategorieController {
 		logger.info(categories);
 	    return null;
 	}
+	/**
+	 * 显示分类
+	 */
+	@RequestMapping("/list_categorie.do")
+	public String list_categorie(){
+		return "/back/categorie_list.jsp";
+	}
+	
 	
 }

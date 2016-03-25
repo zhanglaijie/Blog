@@ -1,16 +1,17 @@
 <%@ page contentType="text/html;charset=utf-8"%>
+<%@include file="/WEB-INF/jsp/taglib.jsp" %>
 <div style="text-align: center;">
 	<img alt="140x140" style="width:160px;margin-top:40px;" src="${ctx}/image/icon.png" class="img-circle" />
-	<h2>张来杰</h2>
-	<h3><a>@zhanglaijie</a></h3>
-	<button type="button" class="btn btn-default btn-lg" style="margin-top:20px;">sign out</button>
+	<h2><c:out value="${user.nicename}" default="末设置用户名"/></h2>
+	<h3><a>@<c:out value="${user.username}"/></a></h3>
+	<a type="button" class="btn btn-default btn-lg" style="margin-top:20px;" href="${ctx}/userController/logout.do">sign out</a>
 </div>
 <ul class="nav nav-pills nav-stacked" style="margin-top: 30px;">
-	<li class="active">
-		 <a href="#">个人信息</a>
+	<li id="profile">
+		 <a href="${ctx}/userController/about_me.do">个人信息</a>
 	</li>
-	<li>
-		 <a href="#">账户设置</a>
+	<li id="account_setting">
+		 <a href="${ctx}/userController/account_settings.do">账户设置</a>
 	</li>
 	<li>
 		 <a href="#">安全</a>

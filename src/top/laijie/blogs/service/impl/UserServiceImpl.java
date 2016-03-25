@@ -64,6 +64,11 @@ import top.laijie.blogs.tool.ServiceException;
 	        return user;
 		} 
 		@Override
+		public User getUserBySomething(Query query) {
+	        User user = mongoTemplate.findOne(query, User.class,USER_COLLECTION);  
+	        return user;
+		} 
+		@Override
 		public User getUserByblogaddress(String blogaddress) {
 			Query query = new Query();  
 	        query.addCriteria(Criteria.where("blogaddress").is(blogaddress));  

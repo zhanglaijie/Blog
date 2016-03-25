@@ -34,7 +34,7 @@
 					</h3>
 				</div>
 				<div class="panel-body">
-					[编辑分类]
+					<a href="${ctx}/categorieController/list_categorie.do">[编辑分类]</a>
 				</div>
 				<div class="panel-body">
 					[未分类]

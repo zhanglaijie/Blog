@@ -144,7 +144,7 @@ public class UserController {
     /**
      * About_me
      */
-    @RequestMapping("about_me.do")
+    @RequestMapping("/about_me.do")
     public String about_me(ModelMap map){
     	String email = UserUtils.getCurrentLoginName();
     	User user = userService.getUserByEmail(email);
@@ -155,7 +155,21 @@ public class UserController {
      * 完善资料
      * @return 
      */
-    public void prefect_info(){
-    	
+    @RequestMapping("/prefect_info.do")
+    public String prefect_info(HttpServletRequest request){
+    	String email = request.getParameter("email");
+    	String nicename = request.getParameter("nicename");
+    	String username = request.getParameter("username");
+    	String blogsubname = request.getParameter("blogsubname");
+    	User user = userService.getUserByEmail(email);
+    	user.setUsername(username);
+    	user.setNicename(nicename);
+    	user.setBlogsubname(blogsubname);
+    	userService.save(user);
+    	return "/login.jsp";
+    }
+    @RequestMapping("/account_settings.do")
+    public String account_settings(){
+    	return "/back/account_Settings.jsp";
     }
 }  

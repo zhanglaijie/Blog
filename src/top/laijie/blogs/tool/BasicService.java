@@ -2,6 +2,7 @@ package top.laijie.blogs.tool;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -120,7 +121,14 @@ public class BasicService<T> {
 		public T findById(String id) {
 			return mongoTemplate.findById(id, this.getEntityClass());
 		}
-
+		public T findByOBjId(ObjectId _id){
+			return mongoTemplate.findById(_id, this.getEntityClass());
+		}
+		public void DeleteById(String _id){
+			Query query = new Query();
+	        query.addCriteria(Criteria.where("_id").is(_id));  
+			mongoTemplate.remove(query , this.getEntityClass());
+		}
 		/**
 		 * 通过ID获取记录,并且指定了集合名(表的意思)
 		 * 

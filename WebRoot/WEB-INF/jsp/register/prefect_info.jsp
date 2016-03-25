@@ -26,7 +26,7 @@
 			<div class="col-md-6 column" style="margin-top: 120px;">
 					<div class="jumbotron" style="background-color:#fff;border:1px solid #d4dfe7">
 						<h3>激活成功,请完善资料</h3>
-						<form id="prefect-info" action=" " class="form-horizontal" method="post" role="form">
+						<form id="prefect-info" action="${ctx}/userController/prefect_info.do" class="form-horizontal" method="post" role="form">
 							<div class="form-group">
 							<label
 									class="col-sm-4 control-label" for="nicename">
@@ -54,7 +54,6 @@
 							</div>
 							<div class="form-group" style="display:none;">
 								<label class="col-sm-4 control-label" for="email">
-									<span class="glyphicon glyphicon-lock"></span>确认密码</label>
 								<div class="col-sm-8">
 									<input type="text" id="email" name="email" value="${user.email}" /> 
 								</div>

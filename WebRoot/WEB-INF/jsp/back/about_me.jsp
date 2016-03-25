@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="${ctx}/validator/dist/css/bootstrapValidator.css"/>
 	<link rel="stylesheet" href="${ctx}/css/common/common.css"/>
 	<link rel="stylesheet" href="${ctx}/css/back/index.css"/>
+
   </head>
   <body>
 	<div class="container">
@@ -24,67 +25,43 @@
 			<%@include file="./common/me_nav.jsp" %>
 	<!-- 导航结束 -->
 		</div>
-		<div class="col-md-10 column mycontent">
-			<div class="tabbable" id="tabs-547795">
-				<ul class="nav nav-tabs">
-					<li class="active">
-						 <a href="#panel-l1" data-toggle="tab">文章管理</a>
-					</li>
-					<li>
-						 <a href="#panel-l2" data-toggle="tab">类别管理</a>
-					</li>
-					<li >
-						 <a href="#panel-l3" data-toggle="tab">评论管理</a>
-					</li>
-					<li>
-						 <a href="#panel-l4" data-toggle="tab">博客设置</a>
-					</li>
-					<li >
-						 <a href="#panel-l5" data-toggle="tab">博客栏目</a>
-					</li>
-					<li>
-						 <a href="#panel-l6" data-toggle="tab">草稿箱</a>
-					</li>
-					<li>
-						 <a href="#panel-l7" data-toggle="tab">回收站</a>
-					</li>
-				</ul>
-				<div class="tab-content">
-					<div class="tab-pane active" id="panel-l1">
-						<!--正文—左侧导航栏start-->
-						<%@include file="./common/post_list.jsp" %>
-					</div>
-					<div class="tab-pane" id="panel-l2">
-						<p>
-							Howdy, I'm in Section 2.
-						</p>
-					</div>
-					<div class="tab-pane" id="panel-l3">
-						<p>
-							Howdy, I'm in Section 3.
-						</p>
-					</div>
-					<div class="tab-pane" id="panel-l4">
-						<p>
-							Howdy, I'm in Section 4.
-						</p>
-					</div>
-					<div class="tab-pane" id="panel-l5">
-						<p>
-							Howdy, I'm in Section 5.
-						</p>
-					</div>
-					<div class="tab-pane" id="panel-l6">
-						<p>
-							Howdy, I'm in Section 6.
-						</p>
-					</div>
-					<div class="tab-pane" id="panel-l7">
-						<p>
-							Howdy, I'm in Section 7.
-						</p>
-					</div>
-				</div>
+		<div class="col-md-10 column mycontent" style="background-color: rgb(243, 246, 248);">
+			<div class="jumbotron well" 
+			style="background-color:#FFF;margin-left: 100px;margin-top: 50px;">
+				<p>修改个人信息</p>
+					<form role="form" method="post" action="${ctx}/postsController/modifyPost.do">
+						<div class="form-group" style="display:none;">
+							<div>
+								<input name="_id" value="${post._id}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							 <label for="title" class="control-label">昵称:</label>
+							 <div>
+							 	<input class="form-control" id="title" name="title" type="text" value="${post.title}"/>
+							 </div>
+						</div>
+						<div class="form-group">
+							 <label for="title" class="control-label">博客名称:</label>
+							 <div>
+							 	<input class="form-control" id="title" name="title" type="text" value="${post.title}"/>
+							 </div>
+						</div>
+						<div class="form-group">
+							 <label for="title" class="control-label">博客子标题</label>
+							 <div>
+							 	<input class="form-control" id="title" name="title" type="text" value="${post.title}"/>
+							 </div>
+						</div>
+						<div class="form-group">
+							 <label for="title" class="control-label">个人签名:</label>
+							 <div>
+							 	<textarea class="form-control" id="title" name="title" type="text">
+							 	</textarea>
+							 </div>
+						</div> 
+						<button type="submit" id="sub" class="btn btn-default">保存</button>
+					</form>
 			</div>
 		</div>
 	</div>
@@ -94,5 +71,10 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="${ctx}/validator/vendor/bootstrap/js/bootstrap.min.js"></script>
   	<script type="text/javascript" src="${ctx}/validator/dist/js/bootstrapValidator.js"></script>
+ 	<script type="text/javascript">
+ 	$(function(){
+ 		$("#profile").addClass("active");
+ 	});
+ 	</script>
   </body>
 </html>

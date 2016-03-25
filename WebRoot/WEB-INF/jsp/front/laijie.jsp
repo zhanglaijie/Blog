@@ -1,8 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@include file="/WEB-INF/jsp/taglib.jsp" %>
 <!DOCTYPE HTML>
 <html lang="zh-CN">
   <head>
@@ -12,9 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>壹博客登陆系统</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="<%=basePath%>/validator/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<%=basePath%>/validator/dist/css/bootstrapValidator.css"/>
-	<link rel="stylesheet" href="<%=basePath%>/css/front/frontIndex.css"/>
+    <link rel="stylesheet" href="${ctx}/validator/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${ctx}/validator/dist/css/bootstrapValidator.css"/>
+	<link rel="stylesheet" href="${ctx}/css/front/frontIndex.css"/>
   </head>
   <body>
 			<div class="container">
@@ -24,9 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="col-md-4 column" style="color: #fff;">
 						<h3>
-							苍云爹
+							<c:out value="${user.blogname}"></c:out>
 						</h3>
-							<h4>我就是你爹苍云</h4>
+							<h4><c:out value="${user.blogsubname}"></c:out></h4>
 					</div>
 					<div class="col-md-1 column">
 					</div>
@@ -136,7 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</h3>
 							</div>
 							<div class="panel-body" >
-								<p>昵称：张来杰</p>
+								<p>昵称：<c:out value="${user.nicename}"/></p>
 								<p>园龄：7个月</p>
 								<p>关注：0人</p>
 								<p>粉丝：2人</p>
@@ -182,9 +179,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <a href="http://www.cnblogs.com/ContactUs.aspx">联系我们</a><a href="http://group.cnblogs.com/forum/public/">反馈问题</a>©2016<a href="http://www.cnblogs.com">博客园</a>/ 代码改变世界
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="<%=basePath%>/validator/vendor/jquery/jquery.min.js"></script>
+    <script src="${ctx}/validator/vendor/jquery/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<%=basePath%>/validator/vendor/bootstrap/js/bootstrap.min.js"></script>
-  	<script type="text/javascript" src="<%=basePath%>/validator/dist/js/bootstrapValidator.js"></script>
+    <script src="${ctx}/validator/vendor/bootstrap/js/bootstrap.min.js"></script>
+  	<script type="text/javascript" src="${ctx}/validator/dist/js/bootstrapValidator.js"></script>
   </body>
 </html>

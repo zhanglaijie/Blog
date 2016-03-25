@@ -2,6 +2,8 @@ package top.laijie.blogs.service;
 
 import java.text.ParseException;
 
+import org.springframework.data.mongodb.core.query.Query;
+
 import top.laijie.blogs.domain.User;
 import top.laijie.blogs.tool.ServiceException;
 
@@ -32,4 +34,5 @@ public interface UserService{
 	public User getUserByEmail(String email);
 	public User getUserByblogaddress(String blogaddress);
 	public User getUserByEmailAndValidate(String email, String validateCode);
+	public User getUserBySomething(Query query);
 }
