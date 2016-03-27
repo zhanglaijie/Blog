@@ -54,16 +54,17 @@
 					<div class="col-md-2 column">
 					</div>
 					<div class="col-md-6 column">
-						<h2>
-							mongodb的save和insert函数的区别 
-
-						</h2>
-						<p>
-							摘要: 如果插入的数据带_id字段，如果数据库里已经存在这个_id的数据，ins
-						</p>
-						<p>
-							 <a class="btn" href="#">View details »</a>
-						</p>
+						<c:forEach items="${postPage.datas}" var="post" varStatus="status">
+							<h3>
+								<c:out value="${post.title}"></c:out>
+							</h3>
+							<p>
+								摘要: 如果插入的数据带_id字段，如果数据库里已经存在这个_id的数据，ins
+							</p>
+							<p>
+								 <a class="btn btn-default" href="#">文章详情»</a>
+							</p>
+						</c:forEach>
 						<h2>
 							Heading
 						</h2>

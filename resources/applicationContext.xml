@@ -23,8 +23,11 @@
     <context:component-scan base-package="top.laijie.blogs">  
 
 		<context:include-filter type="aspectj" expression="top.laijie.blogs.service.*"/>   
-		<context:include-filter type="aspectj" expression="top.laijie.blogs.controller.*"/>   
-   </context:component-scan>  
+		<context:include-filter type="aspectj" expression="top.laijie.blogs.controller.*"/> 
+   	</context:component-scan>  
+   	<context:component-scan base-package="top.laijie.wechat">  
+		<context:include-filter type="aspectj" expression="top.laijie.wechat.ctrl.*"/>   
+   	</context:component-scan>  
     <!-- 
     <context:component-scan base-package="com.founder.publisher.controller.*" />  
     <context:component-scan base-package="com.founder.publisher.service.*" />

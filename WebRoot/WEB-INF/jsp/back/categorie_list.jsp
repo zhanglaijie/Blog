@@ -31,6 +31,11 @@
 				</li>
 			</ul>
 			<%@include file="./common/categories_list.jsp" %>
+			<ul class="breadcrumb">
+				<li>
+					 <a href="#">添加新分类</a>
+				</li>
+			</ul>
 	</div>
 </div>
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
