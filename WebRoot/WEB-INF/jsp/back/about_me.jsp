@@ -71,10 +71,41 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="${ctx}/validator/vendor/bootstrap/js/bootstrap.min.js"></script>
   	<script type="text/javascript" src="${ctx}/validator/dist/js/bootstrapValidator.js"></script>
+  	<script type="text/javascript" src="${ctx}/js/ajaxfileupload.js"></script>
  	<script type="text/javascript">
  	$(function(){
  		$("#profile").addClass("active");
+ 		
+ 		
  	});
+ 	function clickInput(){
+			$('#file').click();
+		}
+		function uploadImage(){
+				var url_pb = "${ctx}/uploadFileController/ajaxupload.do";
+		        $.ajaxFileUpload(
+					{
+						url:url_pb,
+						dataType:'text',
+						data:id=1,
+						secureuri:false,
+						fileElementId:['file'], 
+						success: function (data)
+						{
+							alert(data);
+							//var a = $(data);
+							//eval('var obj='+a.html());
+							//var obj = jQuery.parseJSON(a.html());
+							//if(obj.code=="409020"){
+							//	alert(obj.msg);
+							//}else{
+							//	$("#photo").attr("src",obj.msg);	
+							//}
+						}
+					}
+				);
+			return false;
+		}
  	</script>
   </body>
 </html>

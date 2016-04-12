@@ -65,42 +65,6 @@
 								 <a class="btn btn-default" href="#">文章详情»</a>
 							</p>
 						</c:forEach>
-						<h2>
-							Heading
-						</h2>
-						<p>
-							Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-						</p>
-						<p>
-							 <a class="btn" href="#">View details »</a>
-						</p>
-						<h2>
-							Heading
-						</h2>
-						<p>
-							Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-						</p>
-						<p>
-							 <a class="btn" href="#">View details »</a>
-						</p>
-						<h2>
-							Heading
-						</h2>
-						<p>
-							Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-						</p>
-						<p>
-							 <a class="btn" href="#">View details »</a>
-						</p>
-						<h2>
-							Heading
-						</h2>
-						<p>
-							Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-						</p>
-						<p>
-							 <a class="btn" href="#">View details »</a>
-						</p>
 						<ul class="pagination">
 							<li>
 								 <a href="#">Prev</a>
