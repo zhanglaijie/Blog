@@ -4,5 +4,5 @@ import top.laijie.blogs.domain.Categories;
 
 
 public interface CategorieService {
-	public void createPost(Categories categories);
+	public void createCategories(Categories categories);
 }

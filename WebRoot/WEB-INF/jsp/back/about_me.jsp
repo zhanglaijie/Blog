@@ -29,34 +29,35 @@
 			<div class="jumbotron well" 
 			style="background-color:#FFF;margin-left: 100px;margin-top: 50px;">
 				<p>修改个人信息</p>
-					<form role="form" method="post" action="${ctx}/postsController/modifyPost.do">
+					<form role="form" method="post" action="${ctx}/userController/modifyInfo.do">
 						<div class="form-group" style="display:none;">
 							<div>
-								<input name="_id" value="${post._id}"/>
+								<input id="_id" name="_id" value="${user._id}"/>
 							</div>
 						</div>
 						<div class="form-group">
 							 <label for="title" class="control-label">昵称:</label>
 							 <div>
-							 	<input class="form-control" id="title" name="title" type="text" value="${post.title}"/>
+							 	<input class="form-control" id="nicename" name="nicename" type="text" value="${user.nicename}"/>
 							 </div>
 						</div>
 						<div class="form-group">
 							 <label for="title" class="control-label">博客名称:</label>
 							 <div>
-							 	<input class="form-control" id="title" name="title" type="text" value="${post.title}"/>
+							 	<input class="form-control" id="blogname" name="blogname" type="text" value="${user.blogname}"/>
 							 </div>
 						</div>
 						<div class="form-group">
 							 <label for="title" class="control-label">博客子标题</label>
 							 <div>
-							 	<input class="form-control" id="title" name="title" type="text" value="${post.title}"/>
+							 	<input class="form-control" id="blogsubname" name="blogsubname" type="text" value="${user.blogsubname}"/>
 							 </div>
 						</div>
 						<div class="form-group">
 							 <label for="title" class="control-label">个人签名:</label>
 							 <div>
-							 	<textarea class="form-control" id="title" name="title" type="text">
+							 	<textarea class="form-control" id="description" name="description" type="text">
+							 	${user.description}
 							 	</textarea>
 							 </div>
 						</div> 
@@ -92,15 +93,7 @@
 						fileElementId:['file'], 
 						success: function (data)
 						{
-							alert(data);
-							//var a = $(data);
-							//eval('var obj='+a.html());
-							//var obj = jQuery.parseJSON(a.html());
-							//if(obj.code=="409020"){
-							//	alert(obj.msg);
-							//}else{
-							//	$("#photo").attr("src",obj.msg);	
-							//}
+							window.location.href=("${ctx}/userController/about_me.do");
 						}
 					}
 				);

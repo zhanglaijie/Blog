@@ -3,7 +3,7 @@
 <div style="text-align: center;">
     <input type="file" id="file" accept="image/*" name="file" multiple="multiple" style="display: none;" onchange="uploadImage();"/>
 	<a href="javascript:void(0)" onclick="clickInput();">
-		<img alt="140x140" style="width:160px;margin-top:40px;" src="${ctx}/logo/20120512002116_JcmiA.jpeg" class="img-circle" />
+		<img alt="140x140" style="width:160px;height:160px;margin-top:40px;" src="${ctx}${user.album}" class="img-circle" />
 	</a>
 	<h2><c:out value="${user.nicename}" default="末设置用户名"/></h2>
 	<h3><a>@<c:out value="${user.username}"/></a></h3>

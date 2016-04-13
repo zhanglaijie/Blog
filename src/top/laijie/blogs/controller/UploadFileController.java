@@ -39,6 +39,11 @@ public class UploadFileController {
     public void ajaxUploadFile(HttpServletRequest request,
     		HttpServletResponse response){
     	 response.setContentType("text/html");
+    	 
+    	 String loginName = UserUtils.getCurrentLoginName();
+     	logger.info(loginName);
+     	User user = userService.getUserByEmail(loginName);
+     	
     	 	String savePath = this.getClass().getClassLoader().getResource("/").getPath();
     	// String savePath = request.getSession().getServletContext().getContextPath();
     	 //得到上传文件的保存目录，将上传的文件存放于WEB-INF目录下，不允许外界直接访问，保证上传文件的安全
@@ -81,6 +86,7 @@ public class UploadFileController {
                         if(filename==null || filename.trim().equals("")){
                             continue;
                         }
+                        
                         //注意：不同的浏览器提交的文件名是不一样的，有些浏览器提交上来的文件名是带有路径的，如：  c:\a\b\1.txt，而有些只是单纯的文件名，如：1.txt
                         //处理获取到的上传文件的文件名的路径部分，只保留文件名部分
                         filename = filename.substring(filename.lastIndexOf("\\")+1);
@@ -97,6 +103,9 @@ public class UploadFileController {
                             //使用FileOutputStream输出流将缓冲区的数据写入到指定的目录(savePath + "\\" + filename)当中
                             out.write(buffer, 0, len);
                         }
+                        
+                        user.setAlbum("/logo/"+filename);
+                        userService.save(user);
                         //关闭输入流
                         in.close();
                         //关闭输出流
@@ -111,14 +120,11 @@ public class UploadFileController {
                 e.printStackTrace();
                 
             }
+            
             request.setAttribute("message",message);
-    	 String loginName = UserUtils.getCurrentLoginName();
-    	logger.info(loginName);
-    	User user = userService.getUserByEmail(loginName);
-    		//user.set
-    	try {
+    	    	try {
 			PrintWriter writer = response.getWriter();
-			writer.print("laijie");
+			writer.print(true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

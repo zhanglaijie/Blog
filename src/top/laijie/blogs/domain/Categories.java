@@ -16,18 +16,29 @@ public class Categories extends Basic implements Serializable{
 	/**
 	 * 分类
 	 */
-	@Reference
-	private User user;
-	private int Parents;
+	private ObjectId _id;
 	private String title;
+	private ObjectId uid;
 	private String description;
 	private int visible;
 	private int count;
+	public ObjectId get_id() {
+		return _id;
+	}
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public ObjectId getUid() {
+		return uid;
+	}
+	public void setUid(ObjectId uid) {
+		this.uid = uid;
 	}
 	public String getDescription() {
 		return description;
@@ -47,37 +58,6 @@ public class Categories extends Basic implements Serializable{
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public Categories() {
-		_id= new ObjectId();
-		// TODO Auto-generated constructor stub
-	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	public int getParents() {
-		return Parents;
-	}
-	public void setParents(int parents) {
-		Parents = parents;
-	}
-	@Override
-	public String toString() {
-		return "Categories [user=" + user + ", Parents=" + Parents + ", title="
-				+ title + ", description=" + description + ", visible="
-				+ visible + ", count=" + count + "]";
-	}
-	public Categories(User user, int parents, String title, String description,
-			int visible, int count) {
-		super();
-		this.user = user;
-		Parents = parents;
-		this.title = title;
-		this.description = description;
-		this.visible = visible;
-		this.count = count;
-	}
+	
 	
 }

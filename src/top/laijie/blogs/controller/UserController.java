@@ -172,4 +172,18 @@ public class UserController {
     public String account_settings(){
     	return "/back/account_Settings.jsp";
     }
+    
+    @RequestMapping("/modifyInfo.do")
+    public String modifyInfo(User user){
+    	String loginName = UserUtils.getCurrentLoginName();
+    	User user2 = userService.getUserByEmail(loginName);
+    	user2.setBlogname(user.getBlogname());
+    	user2.setNicename(user.getNicename());
+    	user2.setBlogsubname(user.getBlogsubname());
+    	user2.setDescription(user.getDescription());
+    	userService.save(user2);
+    			
+    	//userService.save(user);
+    	return "redirect:/userController/about_me.do";
+    }
 }  

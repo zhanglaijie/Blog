@@ -36,6 +36,27 @@ public class User extends Basic implements Serializable{
      * 			 1- 管理员
      */
     private int auth =0;
+    /**
+     * 头像
+     */
+    private String album;
+    public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	/**
+     * 个性说明
+     */
+    private String description;
+    
+	public String getAlbum() {
+		return album;
+	}
+	public void setAlbum(String album) {
+		this.album = album;
+	}
 	public String getUid() {
 		return uid;
 	}
@@ -125,7 +146,9 @@ public class User extends Basic implements Serializable{
 				+ ", status=" + status + ", validateCode=" + validateCode
 				+ ", registerTime=" + registerTime + ", blogname=" + blogname
 				+ ", blogaddress=" + blogaddress + ", blogsubname="
-				+ blogsubname + ", auth=" + auth + "]";
+				+ blogsubname + ", auth=" + auth + ", album=" + album
+				+ ", description=" + description + "]";
 	}
+	
 	
 }

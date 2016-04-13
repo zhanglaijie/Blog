@@ -36,6 +36,34 @@
 					 <a href="#">添加新分类</a>
 				</li>
 			</ul>
+			<div class="col-md-5 column">
+			<form role="form" method="post" action="${ctx}/categorieController/create_categorie.do">
+						
+						<div class="form-group">
+							 <label for="title" class="control-label">标题</label>
+							 <div>
+							 	<input class="form-control" id="title" name="title" type="text"/>
+							 </div>
+						</div>
+						<div class="form-group">
+							 <label for="title" class="control-label">可见性:</label>
+							 <div>
+							 	可见<input class="" id="visible" name="visible" type="radio" />
+							 	不可见<input class="" id="visible" name="visible" type="radio" />
+							 </div>
+						</div>
+						
+						<div class="form-group">
+							 <label for="title" class="control-label">描述:</label>
+							 <div>
+							 	<textarea class="form-control" id="description" name="description" type="text">
+							 	
+							 	</textarea>
+							 </div>
+						</div> 
+						<button type="submit" id="sub" class="btn btn-default">保存</button>
+					</form>
+			</div>
 	</div>
 </div>
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

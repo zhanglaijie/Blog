@@ -17,7 +17,7 @@
 			<div class="container">
 				<div class="row clearfix" style="background-color: #C7D0FB;">
 					<div class="col-md-2 column">
-						<img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" style="padding: 20px;"/>
+						<img alt="140x140" src="${ctx} ${user.album}" style="width:140px;height:140px; padding: 20px;"/>
 					</div>
 					<div class="col-md-4 column" style="color: #fff;">
 						<h3>
@@ -36,7 +36,7 @@
 								 <a href="#">首页</a>
 							</li>
 							<li>
-								 <a href="#">新随笔</a>
+								 <a href="${ctx}/postsController/createPostNavigation.do">新随笔</a>
 							</li>
 							<li>
 								 <a href="#">联系</a>
@@ -45,7 +45,7 @@
 								 <a href="#">订阅</a>
 							</li>
 							<li>
-								 <a href="#">管理</a>
+								 <a href="${ctx}/postsController/listPosts.do">管理</a>
 							</li>
 						</ul>
 					</div>
