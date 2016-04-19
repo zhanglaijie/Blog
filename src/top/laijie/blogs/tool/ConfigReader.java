@@ -110,6 +110,6 @@ public abstract class ConfigReader {
 	}
 
 	public static void main(final String[] args) throws ConfigurationException {
-		System.out.println(ConfigReader.get("jdbc.username"));
+		System.out.println(ConfigReader.get("log4j.rootLogger"));
 	}
 }

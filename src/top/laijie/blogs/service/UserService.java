@@ -35,4 +35,6 @@ public interface UserService{
 	public User getUserByblogaddress(String blogaddress);
 	public User getUserByEmailAndValidate(String email, String validateCode);
 	public User getUserBySomething(Query query);
+	
+	public User findByNameAndPwd(String email,String passwd);
 }

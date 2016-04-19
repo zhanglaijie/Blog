@@ -177,5 +177,14 @@ import top.laijie.blogs.tool.ServiceException;
 		protected  Class<User> getEntityClass(){
 			return User.class;
 		}
+
+		@Override
+		public User findByNameAndPwd(String email, String password) {
+			Query query = new Query();  
+	        query.addCriteria(Criteria.where("email").is(email));  
+	        query.addCriteria(Criteria.where("password").is(password));
+	        User user = mongoTemplate.findOne(query, User.class);  
+	        return user;
+		}
 	}
 
